@@ -9,6 +9,13 @@ package poker;
 class Card 
 {
     private Rank rank;
+    private Suit suit;
+    
+    public Card(Rank rank, Suit suit)
+    {
+        this.rank = rank;
+        this.suit = suit;
+    }
     
     public Card(String card)
     {
@@ -19,6 +26,11 @@ class Card
     public Rank getRank()
     {
         return this.rank;
+    }
+    
+    public Suit getSuit()
+    {
+        return suit;
     }
     
     

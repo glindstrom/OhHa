@@ -4,24 +4,50 @@
  */
 package poker;
 
-import org.junit.Before;
-import org.junit.Test;
+
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 
 public class CardTest
-{
-    
-    @Before
-    public void setUp()
+{        
+    @Test
+    public void constructorInitsRanksCorrectly()
     {
+        Card c;
+        for (Rank rank : Rank.values())
+        {
+            c = new Card(rank, Suit.HEARTS);
+            assertEquals(rank, c.getRank());
+        }                 
+    }
+            
+    @Test
+    public void constructorInitsSuitsCorrectly()
+    {
+        Card c;
+        for (Suit suit : Suit.values())
+        {
+            c = new Card(Rank.ACE, suit);
+            assertEquals(suit, c.getSuit());
+        }
     }
     
     @Test
-    public void constructorWorks()
+    public void constructorSetsRankAceUsingStringArgument()
     {
         Card c = new Card("Ad");
-        assertEquals(c.getRank(), Rank.ACE);
+        assertEquals(Rank.ACE, c.getRank());
     }
+    
+    
+    
+//    @Test
+//    public void constructorSetsRankKingUsingStringArgument()
+//    {
+//       Card c = new Card("Kd");
+//       assertEquals(Rank.KING, c.getRank());
+//        
+//    }
     
 }
