@@ -12,7 +12,7 @@ import org.junit.Test;
 public class CardTest
 {        
     @Test
-    public void constructorInitsRanksCorrectly()
+    public void rankMatchesConstructor()
     {
         Card c;
         for (Rank rank : Rank.values())
@@ -23,7 +23,7 @@ public class CardTest
     }
             
     @Test
-    public void constructorInitsSuitsCorrectly()
+    public void suitMatchesConstructor()
     {
         Card c;
         for (Suit suit : Suit.values())
@@ -34,7 +34,7 @@ public class CardTest
     }
     
     @Test
-    public void constructorSetsRankAceUsingStringArgument()
+    public void RankAceMatchesConstructorUsingStringArgument()
     {
         Card c = new Card("Ad");
         assertEquals(Rank.ACE, c.getRank());
