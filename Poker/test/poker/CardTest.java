@@ -2,6 +2,8 @@
 package poker;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -69,5 +71,23 @@ public class CardTest
         Card c = new Card("W6");
     }
     
+    @Test
+    public void cardsSortFromHighestRankToLowest()
+    {   
+        Card c1 = new Card("Kd");
+        Card c2 = new Card("Ac");
+        Card c3 = new Card("Qs");
+        Card c4 = new Card("Kc") ;  
+        ArrayList<Card> cards = new ArrayList();
+        cards.add(c1);
+        cards.add(c2);
+        cards.add(c3);
+        cards.add(c4);
+        Collections.sort(cards);
+        assertEquals(c2, cards.get(0));
+        assertEquals(c1, cards.get(1));
+        assertEquals(c4, cards.get(2));
+        assertEquals(c3, cards.get(3));
+    }
     
 }

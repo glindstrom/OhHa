@@ -7,7 +7,7 @@ package poker;
  * @see Rank
  * @see Suit
  */
-class Card 
+class Card implements Comparable<Card>
 {
     private Rank rank;
     private Suit suit;
@@ -53,4 +53,10 @@ class Card
     {
         return suit;
     }        
+
+    @Override
+    public int compareTo(Card other)
+    {
+        return this.rank.compareTo(other.getRank());
+    }
 }
