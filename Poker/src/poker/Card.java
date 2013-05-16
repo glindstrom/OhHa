@@ -19,8 +19,12 @@ class Card
     
     public Card(String card)
     {
-        this.rank = Rank.ACE;
-        
+        if (card.length() != 2)
+        {
+            throw new IllegalArgumentException();
+        }
+        this.rank = Rank.charToRank(card.charAt(0));
+        this.suit = Suit.charToSuit(card.charAt(1));
     }
     
     public Rank getRank()

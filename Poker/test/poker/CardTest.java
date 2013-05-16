@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package poker;
 
 
@@ -34,20 +31,43 @@ public class CardTest
     }
     
     @Test
-    public void RankAceMatchesConstructorUsingStringArgument()
+    public void rankAceMatchesConstructorUsingStringArgument()
     {
         Card c = new Card("Ad");
         assertEquals(Rank.ACE, c.getRank());
     }
+            
+    @Test
+    public void rankKingMatchesConstructorUsingStringArgument()
+    {
+       Card c = new Card("Kd");
+       assertEquals(Rank.KING, c.getRank());        
+    }
     
+    @Test
+    public void suitHeartMatchesConstructorUsingStringArgument()
+    {
+        Card c = new Card("5H");
+        assertEquals(Suit.HEARTS, c.getSuit());
+    }
     
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorThrowsExceptionWhenArgumentLongerThanTwo()
+    {
+        Card c = new Card("TCC");
+    }
     
-//    @Test
-//    public void constructorSetsRankKingUsingStringArgument()
-//    {
-//       Card c = new Card("Kd");
-//       assertEquals(Rank.KING, c.getRank());
-//        
-//    }
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorThrowsExceptionWhenArgumentShorterThanTwo()
+    {
+        Card c = new Card("6");
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorThrowsExceptionWhenIncorrectArgument()
+    {
+        Card c = new Card("W6");
+    }
+    
     
 }
