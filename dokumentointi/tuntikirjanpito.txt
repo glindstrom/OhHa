@@ -1,3 +1,5 @@
 ﻿14.5.2013	2h	Ensimmäinen tehtävä
 15.5.2013	1h	Luokkakaavio
 15.5.2013	4h	Ohjelmointi
+16.5.2013	1h	Ohjelmointi
+16.5.2013	2h	Dokumentointi
