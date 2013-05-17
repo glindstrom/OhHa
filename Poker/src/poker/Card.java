@@ -7,7 +7,7 @@ package poker;
  * @see Rank
  * @see Suit
  */
-class Card implements Comparable<Card>
+public class Card implements Comparable<Card>
 {
     private Rank rank;
     private Suit suit;
