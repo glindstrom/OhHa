@@ -16,6 +16,17 @@ public class Hand
     {
         this.cards = new ArrayList();
     }
+
+    Hand(String hand)
+    {
+        this.cards = new ArrayList();
+        for (int i = 0; i < hand.length(); i+=2)
+        {
+            String card = String.valueOf(hand.charAt(i)) + hand.charAt(i+1); 
+            Card c = new Card(card);
+            this.cards.add(c);
+        }
+    }            
     
     /**
      * Adds a card to the Hand.
@@ -31,4 +42,10 @@ public class Hand
         this.cards.add(c);
         return true;
     }
+    
+
+    List<Card> getCards()
+    {
+        return this.cards;
+    }    
 }

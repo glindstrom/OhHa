@@ -59,4 +59,34 @@ public class Card implements Comparable<Card>
     {
         return this.rank.compareTo(other.getRank());
     }
+
+    @Override
+    public boolean equals(Object otherObject)
+    {
+        if (this == otherObject)
+        {
+            return true;
+        }
+        if (otherObject == null)
+        {
+            return false;
+        }
+        if (!(otherObject instanceof Card))
+        {
+            return false;
+        }
+        Card other = (Card) otherObject;
+        return this.rank == other.rank && this.suit == other.suit;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int hash = 5;
+        hash = 47 * hash + (this.rank != null ? this.rank.hashCode() : 0);
+        hash = 47 * hash + (this.suit != null ? this.suit.hashCode() : 0);
+        return hash;
+    }
+    
+    
 }

@@ -90,4 +90,11 @@ public class CardTest
         assertEquals(c3, cards.get(3));
     }
     
+    @Test
+    public void cardsWithSameRankAndSuitAreEqual()
+    {
+        Card c1 = new Card("Kd");
+        Card c2 = new Card("Kd");
+        assertEquals(c1, c2);
+    }
 }
