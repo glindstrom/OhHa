@@ -2,30 +2,26 @@
 
 package poker;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 /**
  * A Hand object represents a five card poker hand.
  * @see Card
  */
 public class Hand 
 {
-    private List<Card> cards;
+    private Set<Card> cards;
         
     public Hand()
     {
-        this.cards = new ArrayList();
+        this.cards = new HashSet();
     }
 
-    Hand(String hand)
+    Hand(Card... cards)
     {
-        this.cards = new ArrayList();
-        for (int i = 0; i < hand.length(); i+=2)
-        {
-            String card = String.valueOf(hand.charAt(i)) + hand.charAt(i+1); 
-            Card c = new Card(card);
-            this.cards.add(c);
-        }
+        this.cards = new HashSet();
+        this.cards.addAll(Arrays.asList(cards));
     }            
     
     /**
@@ -44,8 +40,8 @@ public class Hand
     }
     
 
-    List<Card> getCards()
+    Set<Card> getCards()
     {
-        return this.cards;
+        return new HashSet<>(this.cards);
     }    
 }

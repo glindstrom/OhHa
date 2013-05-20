@@ -1,7 +1,7 @@
 package poker;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -23,17 +23,22 @@ public class HandTest
         Card c6 = new Card("As");
         assertFalse(h.addCard(c6));
     }
+    
+    @Test
+    public void addedCardIsInHand()
+    {
+        Hand h = new Hand();
+        Card c = new Card("4h");
+        h.addCard(c);
+        assertTrue(h.getCards().contains(c));
+    }
 
     @Test
-    public void cardsInHandMatchesConstructor()
+    public void cardInHandMatchesConstructor()
     {
-        Hand h = new Hand("7h3cJhQsKc");
-        List<Card> cards = h.getCards();
-        List<Card> compareTocards = createFiveCards();
-        for (int i = 0; i < cards.size(); i++)
-        {
-            assertEquals(compareTocards.get(i), cards.get(i));
-        }
+        Card c = new Card("9c");
+        Hand h = new Hand(c);
+        assertTrue(h.getCards().contains(c));
     }
 
     private void addFiveCardsToHand(Hand h)
