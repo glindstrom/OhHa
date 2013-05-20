@@ -57,7 +57,11 @@ public class Card implements Comparable<Card>
     @Override
     public int compareTo(Card other)
     {
-        return this.rank.compareTo(other.getRank());
+        if (this.rank != other.rank)
+        {
+            return this.rank.compareTo(other.getRank());
+        }
+        return this.suit.compareTo(other.suit);
     }
 
     @Override

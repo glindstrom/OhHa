@@ -5,6 +5,7 @@ package poker;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 /**
  * A Hand object represents a five card poker hand.
  * @see Card
@@ -17,7 +18,10 @@ public class Hand
     {
         this.cards = new HashSet();
     }
-
+    /**
+     * Creates a hand containing the specified cards.
+     * @param cards The cards to be included in the hand.
+     */
     Hand(Card... cards)
     {
         this.cards = new HashSet();
@@ -39,9 +43,12 @@ public class Hand
         return true;
     }
     
-
+    /**
+     * Returns the cards in the hand.
+     * @return A shallow copy of the set of cards.
+     */
     Set<Card> getCards()
     {
-        return new HashSet<>(this.cards);
+        return new TreeSet<>(this.cards);
     }    
 }
