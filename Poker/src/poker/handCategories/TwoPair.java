@@ -2,13 +2,13 @@
 
 package poker.handCategories;
 
-import poker.handCategories.HandCategory;
+import poker.Hand;
 
 public class TwoPair extends HandCategory
 {
-    public TwoPair()
+    public TwoPair(Hand h)
     {
-        super(6);
+        super(6, h);
     }
 
 

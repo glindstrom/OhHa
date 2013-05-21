@@ -46,7 +46,7 @@ public class Hand
      * Returns the cards in the hand.
      * @return A shallow copy of the set of cards.
      */
-    TreeSet<Card> getCards()
+    public TreeSet<Card> getCards()
     {
         return new TreeSet<>(this.cards);
     }    

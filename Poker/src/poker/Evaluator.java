@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.TreeSet;
 import poker.handCategories.*;
 
-class Evaluator
+public class Evaluator
 {
 
-    private int[] cardFrequencies;
+    //private int[] cardFrequencies;
 
     public Evaluator()
     {
@@ -34,73 +34,82 @@ class Evaluator
     {
         calculateCardFrequencies(h);
         
-        if (findFourOfAKind(h) >= 0)
+        if (findFourOfAKind(h))
         {
-            return new Quads(Rank.intToRank(findFourOfAKind(h)));
+            return new Quads(h);
         }
-        if (findThreeOfAKind(h) >= 0 && findOnePair(h) >= 0)
+        if (findThreeOfAKind(h) && findOnePair(h))
         {
-            return new FullHouse();
+            return new FullHouse(h);
         }
-        if (findThreeOfAKind(h) >= 0)
+        if (findThreeOfAKind(h))
         {
-            return new ThreeOfAKind();
+            return new ThreeOfAKind(h);
         }
-        if (findTwoPair(h) >= 0)
+        if (findTwoPair(h))
         {
-            return new TwoPair();
+            return new TwoPair(h);
         }
-        if (findOnePair(h) >= 0)
+        if (findOnePair(h))
         {
-            return new OnePair();
+            return new OnePair(h);
         }
         if (findFlush(h) && findStraight(h))
         {
-            return new StraightFlush(h.getCards().first());
+            return new StraightFlush(h);
         }
         if (findFlush(h))
         {
-            return new Flush();
+            return new Flush(h);
         }
         if (findStraight(h))
         {
-            return new Straight();
+            return new Straight(h);
         }
        
-        return new HighCard();
+        return new HighCard(h);
     }
 
-    private int findFourOfAKind(Hand h)
+    private boolean findFourOfAKind(Hand h)
     {
-        return hasKind(4, 0);
+        return hasKind(4, h);
     }
 
-    private int findThreeOfAKind(Hand h)
+    private boolean findThreeOfAKind(Hand h)
     {
-        return hasKind(3, 0);
+        return hasKind(3, h);
     }
 
-    private int findTwoPair(Hand h)
+    private boolean findTwoPair(Hand h)
     {
-        int i = hasKind(2, 0);
-        return i < 0 ? i : hasKind(2, i + 1);
-    }
-
-    private int findOnePair(Hand h)
-    {
-        return hasKind(2, 0);
-    }
-
-    private int hasKind(int n, int startIndex)
-    {
-        for (int i = startIndex; i < this.cardFrequencies.length; i++)
+        int numberOfPairs = 0;
+        int [] cardFrequencies = calculateCardFrequencies(h);
+        for (int i : cardFrequencies)
         {
-            if (this.cardFrequencies[i] == n)
+            if (i == 2)
             {
-                return i;
+                numberOfPairs++;
             }
         }
-        return -1;
+        return numberOfPairs == 2;
+    }
+
+    private boolean findOnePair(Hand h)
+    {
+        return hasKind(2, h);
+    }
+
+    private boolean hasKind(int n, Hand h)
+    {
+        int [] cardFrequencies = calculateCardFrequencies(h);
+        for (int i = 0; i < cardFrequencies.length; i++)
+        {
+            if (cardFrequencies[i] == n)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean findFlush(Hand h)
@@ -143,12 +152,13 @@ class Evaluator
         System.out.println(e.compareHands(h1, h2));
     }
 
-    private void calculateCardFrequencies(Hand h)
+    public static int [] calculateCardFrequencies(Hand h)
     {
-        this.cardFrequencies = new int[13];
+        int [] cardFrequencies = new int[13];
         for (Card c : h.getCards())
         {
-            this.cardFrequencies[c.getRank().ordinal()]++;
+            cardFrequencies[c.getRank().ordinal()]++;
         }
+        return cardFrequencies;
     }
 }

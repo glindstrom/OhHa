@@ -2,16 +2,16 @@
 
 package poker.handCategories;
 
-import poker.Card;
+import poker.Hand;
 
 
 public class StraightFlush extends HandCategory
 {
-    private Card highestCard;
-    public StraightFlush(Card highestCard)
+    
+    public StraightFlush(Hand h)
     {
-        super(0);
-        this.highestCard = highestCard;
+        super(0, h);
+        
     }        
 
     @Override
@@ -20,7 +20,7 @@ public class StraightFlush extends HandCategory
         int comparison =  super.compareTo(otherHandCategory);
         if (comparison != 0) { return comparison;}
         StraightFlush other = (StraightFlush) otherHandCategory;
-        return this.highestCard.getRank().compareTo(other.highestCard.getRank());        
+        return this.getHand().getCards().first().getRank().compareTo(other.getHand().getCards().first().getRank());        
     }
     
     

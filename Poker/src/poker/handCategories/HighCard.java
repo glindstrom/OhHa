@@ -2,12 +2,14 @@
 
 package poker.handCategories;
 
+import poker.Hand;
+
 
 public class HighCard extends HandCategory
 {
-    public HighCard()
+    public HighCard(Hand h)
     {
-        super(8);
+        super(8, h);
     }
 
 
