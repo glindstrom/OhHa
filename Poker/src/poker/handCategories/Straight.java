@@ -8,11 +8,4 @@ public class Straight extends HandCategory
     {
         super(4);
     }
-
-    @Override
-    public int compareTo(HandCategory t)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }

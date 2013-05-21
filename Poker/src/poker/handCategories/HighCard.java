@@ -10,10 +10,5 @@ public class HighCard extends HandCategory
         super(8);
     }
 
-    @Override
-    public int compareTo(HandCategory t)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
 }

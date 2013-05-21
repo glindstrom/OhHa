@@ -12,18 +12,35 @@ class Evaluator
 
     public Evaluator()
     {
-        this.cardFrequencies = new int[13];
+    }
+    
+    public int compareHands(Hand h1, Hand h2)
+    {
+        HandCategory hc1  = handCategory(h1);
+        HandCategory hc2 = handCategory(h2);
+        int comparison = hc1.compareTo(hc2);
+        if (comparison < 0)
+        {
+            return 1;
+        }
+        if (comparison > 0)
+        {
+            return 2;
+        }
+        return 0;
     }
 
-    HandCategory handCategory(Hand h)
+    public HandCategory handCategory(Hand h)
     {
-        for (Card c : h.getCards())
-        {
-            this.cardFrequencies[c.getRank().ordinal()]++;
-        }
+        calculateCardFrequencies(h);
+        
         if (findFourOfAKind(h) >= 0)
         {
-            return new FourOfAKind();
+            return new Quads(Rank.intToRank(findFourOfAKind(h)));
+        }
+        if (findThreeOfAKind(h) >= 0 && findOnePair(h) >= 0)
+        {
+            return new FullHouse();
         }
         if (findThreeOfAKind(h) >= 0)
         {
@@ -39,7 +56,7 @@ class Evaluator
         }
         if (findFlush(h) && findStraight(h))
         {
-            return new StraightFlush();
+            return new StraightFlush(h.getCards().first());
         }
         if (findFlush(h))
         {
@@ -88,7 +105,7 @@ class Evaluator
 
     private boolean findFlush(Hand h)
     {
-        TreeSet<Card> cards = (TreeSet<Card>) h.getCards();
+        TreeSet<Card> cards = h.getCards();
         Card card = cards.pollFirst();
         for (Card c : cards)
         {
@@ -104,6 +121,10 @@ class Evaluator
     {
         List<Card> cards = new ArrayList<>();
         cards.addAll(h.getCards());
+        if (cards.get(0).getRank() == Rank.ACE && cards.get(1).getRank() == Rank.FIVE)
+        {
+            return true;
+        }
         for (int i = 0; i < cards.size()-1; i++)
         {
             if (cards.get(i).getRank().ordinal() != cards.get(i+1).getRank().ordinal()-1)
@@ -114,4 +135,20 @@ class Evaluator
         return true;
     }
         
+    public static void main(String[] args)
+    {
+        Evaluator e = new Evaluator();
+        Hand h1 = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("Qs"), new Card("2h"));
+        Hand h2 = new Hand(new Card("Th"), new Card("Td"), new Card("Tc"), new Card("Ts"), new Card("2h"));
+        System.out.println(e.compareHands(h1, h2));
+    }
+
+    private void calculateCardFrequencies(Hand h)
+    {
+        this.cardFrequencies = new int[13];
+        for (Card c : h.getCards())
+        {
+            this.cardFrequencies[c.getRank().ordinal()]++;
+        }
+    }
 }

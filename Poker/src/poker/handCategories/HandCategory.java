@@ -13,4 +13,17 @@ public abstract class HandCategory implements Comparable<HandCategory>
     {
         this.ordinal = ordinal;
     }
+
+    public int getOrdinal()
+    {
+        return ordinal;
+    }
+
+    @Override
+    public int compareTo(HandCategory other)
+    {
+        return this.ordinal - other.ordinal;
+    }
+    
+    
 }

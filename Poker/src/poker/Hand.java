@@ -39,15 +39,14 @@ public class Hand
         {
             return false;
         }
-        this.cards.add(c);
-        return true;
+        return this.cards.add(c);        
     }
     
     /**
      * Returns the cards in the hand.
      * @return A shallow copy of the set of cards.
      */
-    Set<Card> getCards()
+    TreeSet<Card> getCards()
     {
         return new TreeSet<>(this.cards);
     }    

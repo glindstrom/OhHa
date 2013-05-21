@@ -10,10 +10,5 @@ public class OnePair extends HandCategory
         super(7);
     }       
     
-    @Override
-    public int compareTo(HandCategory t)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
     
 }

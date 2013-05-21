@@ -2,8 +2,6 @@
 
 package poker.handCategories;
 
-import poker.handCategories.HandCategory;
-
 
 public class ThreeOfAKind extends HandCategory
 {
@@ -11,10 +9,6 @@ public class ThreeOfAKind extends HandCategory
     {
         super(5);
     }
-    @Override
-    public int compareTo(HandCategory t)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
 
 }
