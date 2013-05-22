@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 /**
- * A Hand object represents a poker hand containing at most five cards.
+ * A Hand object represents a poker hand containing at most seven cards.
  * @see Card
  */
 public class Hand 
@@ -49,5 +49,14 @@ public class Hand
     public TreeSet<Card> getCards()
     {
         return new TreeSet<>(this.cards);
-    }    
+    }  
+    
+    /**
+     * Returns number of cards in hand.
+     * @return An integer denoting the number of cards in the hand. 
+     */
+    public int size()
+    {
+        return this.size();
+    }
 }
