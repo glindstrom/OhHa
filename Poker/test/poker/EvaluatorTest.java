@@ -228,11 +228,11 @@ public class EvaluatorTest
        assertEquals(2, e.compareHands(h1, h2));
     }
     
-//    @Test
-//    public void bestFiveCardHandFromSevenCardHand()
-//    {
-//        Hand h = new Hand(new Card("Ah"), new Card("Th"), new Card("Js"), new Card("Kc"), new Card("Jh"), new Card("4h"), new Card("Qh"));
-//        Hand bestHand = e.best5CardHand(h);
-//        assertEquals(Flush.class, e.handCategory(bestHand));
-//    }
+    @Test
+    public void bestFiveCardHandFromSevenCardHand()
+    {
+        Hand h = new Hand(new Card("Ah"), new Card("Th"), new Card("Js"), new Card("Kc"), new Card("Jh"), new Card("4h"), new Card("Qh"));
+        Hand bestHand = e.best5CardHand(h);
+        assertEquals(Flush.class, e.handCategory(bestHand).getClass());
+    }
 }

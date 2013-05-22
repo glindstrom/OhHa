@@ -14,9 +14,19 @@ public class Evaluator
     
     public int compareHands(Hand h1, Hand h2)
     {
-        HandCategory hc1  = handCategory(h1);
-        HandCategory hc2 = handCategory(h2);
-        int comparison = hc1.compareTo(hc2);
+        if (h1.size() != 5 && h2.size() != 5)
+        {
+            return 0;
+        }
+        if (h1.size() == 5 && h2.size() != 5)
+        {
+            return 1;
+        }
+        if (h2.size() == 5 && h1.size() != 5)
+        {
+            return 2;
+        }
+        int comparison = handCategory(h1).compareTo(handCategory(h2));
         if (comparison < 0)
         {
             return 1;
@@ -63,15 +73,14 @@ public class Evaluator
         if (findStraight(h))
         {
             return new Straight(h);
-        }
-       
+        }       
         return new HighCard(h);
     }
     
-//    public Hand best5CardHand(Hand h)
-//    {
-//        return best5CardHandOutOfNcards(h, 7);
-//    }
+    public Hand best5CardHand(Hand h)
+    {
+        return best5CardHandOutOfNcards(h, 7);
+    }
 
     private boolean findFourOfAKind(Hand h)
     {
@@ -157,25 +166,36 @@ public class Evaluator
         return cardFrequencies;
     }
 
-//    private Hand best5CardHandOutOfNcards(Hand h, int n)
-//    {   Hand bestHand = new Hand();
-//        ArrayList<Card> cards = new ArrayList();
-//        cards.addAll(h.getCards());
-//        for (int i = 0; i < n ; i++)
-//        {
-//            for (int j = i+1; j < n; j++)
-//            {
-//                for (int k = j+1; k < n; k++)
-//                {
-//                    for (int l = k+1; l < n; l++)
-//                    {
-//                        for (int m = l+1; m < n; m++)
-//                        {
-//                            
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    private Hand best5CardHandOutOfNcards(Hand h, int n)
+    {   
+        Hand bestHand = new Hand();
+        ArrayList<Card> cards = new ArrayList();
+        cards.addAll(h.getCards());
+        for (int i = 0; i < n ; i++)
+        {
+            for (int j = i+1; j < n; j++)
+            {
+                for (int k = j+1; k < n; k++)
+                {
+                    for (int l = k+1; l < n; l++)
+                    {
+                        for (int m = l+1; m < n; m++)
+                        {
+                            Hand comparableHand = new Hand();
+                            comparableHand.addCard(cards.get(i));
+                            comparableHand.addCard(cards.get(j));
+                            comparableHand.addCard(cards.get(k));
+                            comparableHand.addCard(cards.get(l));
+                            comparableHand.addCard(cards.get(m));
+                            if (compareHands(comparableHand, bestHand) == 1)
+                            {
+                                bestHand = comparableHand;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return bestHand;
+    }
 }

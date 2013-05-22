@@ -53,10 +53,10 @@ public class Hand
     
     /**
      * Returns number of cards in hand.
-     * @return An integer denoting the number of cards in the hand. 
+     * @return An integer in the interval [0,7]. 
      */
     public int size()
     {
-        return this.size();
+        return this.cards.size();
     }
 }
