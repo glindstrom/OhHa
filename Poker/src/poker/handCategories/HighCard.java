@@ -12,5 +12,12 @@ public class HighCard extends HandCategory
         super(8, h);
     }
 
+    @Override
+    public int compareInternally(HandCategory otherHandCategory)
+    {
+        HighCard other = (HighCard) otherHandCategory;
+        return compareRanksInHand(this.getHand(), other.getHand());
+    }
+
 
 }

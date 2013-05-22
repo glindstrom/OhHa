@@ -8,8 +8,6 @@ import poker.handCategories.*;
 public class Evaluator
 {
 
-    //private int[] cardFrequencies;
-
     public Evaluator()
     {
     }
@@ -69,6 +67,11 @@ public class Evaluator
        
         return new HighCard(h);
     }
+    
+//    public Hand best5CardHand(Hand h)
+//    {
+//        return best5CardHandOutOfNcards(h, 7);
+//    }
 
     private boolean findFourOfAKind(Hand h)
     {
@@ -144,14 +147,6 @@ public class Evaluator
         return true;
     }
         
-    public static void main(String[] args)
-    {
-        Evaluator e = new Evaluator();
-        Hand h1 = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("Qs"), new Card("2h"));
-        Hand h2 = new Hand(new Card("Th"), new Card("Td"), new Card("Tc"), new Card("Ts"), new Card("2h"));
-        System.out.println(e.compareHands(h1, h2));
-    }
-
     public static int [] calculateCardFrequencies(Hand h)
     {
         int [] cardFrequencies = new int[13];
@@ -161,4 +156,26 @@ public class Evaluator
         }
         return cardFrequencies;
     }
+
+//    private Hand best5CardHandOutOfNcards(Hand h, int n)
+//    {   Hand bestHand = new Hand();
+//        ArrayList<Card> cards = new ArrayList();
+//        cards.addAll(h.getCards());
+//        for (int i = 0; i < n ; i++)
+//        {
+//            for (int j = i+1; j < n; j++)
+//            {
+//                for (int k = j+1; k < n; k++)
+//                {
+//                    for (int l = k+1; l < n; l++)
+//                    {
+//                        for (int m = l+1; m < n; m++)
+//                        {
+//                            
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }

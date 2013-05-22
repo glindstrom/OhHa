@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 /**
- * A Hand object represents a five card poker hand.
+ * A Hand object represents a poker hand containing at most five cards.
  * @see Card
  */
 public class Hand 
@@ -29,13 +29,13 @@ public class Hand
     }            
     
     /**
-     * Adds a card to the Hand.
+     * Adds a card to the Hand. At most seven cards can be added to the hand.
      * @param c The Card to be added.
      * @return Returns true if the card was successfully added, false otherwise.
      */
     public boolean addCard(Card c)
     {
-        if (this.cards.size() == 5)
+        if (this.cards.size() == 7)
         {
             return false;
         }

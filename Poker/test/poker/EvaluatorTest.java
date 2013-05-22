@@ -129,8 +129,110 @@ public class EvaluatorTest
     {
         Hand h1 = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("Qs"), new Card("2h"));
         Hand h2 = new Hand(new Card("Th"), new Card("Td"), new Card("Tc"), new Card("Ts"), new Card("2h"));
-        assertEquals(1, e.compareHands(h1, h2));
+        assertEquals(2, e.compareHands(h2, h1));
     }
     
-
+    @Test
+    public void higherKickerWinsWhenQuadsOfEqualStrength()
+    {
+        Hand h1 = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("Qs"), new Card("5h"));
+        Hand h2 = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("Qs"), new Card("9c"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void fullHouseVsFullHouseHigherTripsWins()
+    {
+        Hand h1 = new Hand(new Card("7s"), new Card("7h"), new Card("7c"), new Card("5c"), new Card("5d"));
+        Hand h2 = new Hand(new Card("8s"), new Card("8h"), new Card("8c"), new Card("5c"), new Card("5d"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void fullHouseVsFullHouseHigherPairWinsWhenTripsTie()
+    {
+        Hand h1 = new Hand(new Card("8s"), new Card("8h"), new Card("8c"), new Card("5c"), new Card("5d"));
+        Hand h2 = new Hand(new Card("8s"), new Card("8h"), new Card("8c"), new Card("6c"), new Card("6d"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void higherFlushBeatsLowerFlush()
+    {
+         Hand h1 = new Hand(new Card("Ah"), new Card("Kh"), new Card("Th"), new Card("5h"), new Card("2h")); 
+         Hand h2 = new Hand(new Card("Ah"), new Card("Kh"), new Card("Th"), new Card("7h"), new Card("2h")); 
+         assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void higherStraightBeatsLowerStraight()
+    {
+        Hand h1 = new Hand(new Card("7h"), new Card("Ts"), new Card("9h"), new Card("8h"), new Card("Jh"));
+        Hand h2 = new Hand(new Card("Qh"), new Card("Ts"), new Card("9h"), new Card("8h"), new Card("Jh"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void aceHighStraightBeatsFiveHighStraight()
+    {
+        Hand h1 = new Hand(new Card("3h"), new Card("2s"), new Card("Ah"), new Card("5h"), new Card("4h"));
+        Hand h2 = new Hand(new Card("Qh"), new Card("Ts"), new Card("Kh"), new Card("Ah"), new Card("Jh"));
+        assertEquals(2, e.compareHands(h1, h2));        
+    }
+    
+    @Test
+    public void higherTripsBeatsLowerTrips()
+    {
+        Hand h1 = new Hand(new Card("7h"), new Card("7d"), new Card("7c"), new Card("5s"), new Card("2h"));
+        Hand h2 = new Hand(new Card("Jh"), new Card("Jd"), new Card("Jc"), new Card("5s"), new Card("2h"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void kickerBreaksTieTripsVsTrips()
+    {
+        Hand h1 = new Hand(new Card("9h"), new Card("9d"), new Card("9c"), new Card("5s"), new Card("2h"));
+        Hand h2 = new Hand(new Card("9h"), new Card("9d"), new Card("9c"), new Card("5s"), new Card("3h"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void twoPairVsTwoPairHigherPairWins()
+    {
+        Hand h1 = new Hand(new Card("Qh"), new Card("Qd"), new Card("5c"), new Card("5s"), new Card("2h"));
+        Hand h2 = new Hand(new Card("Kh"), new Card("Kd"), new Card("4c"), new Card("4s"), new Card("2h"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void twoPairVsTwoPairSecondPairBreaksTie()
+    {
+        Hand h1 = new Hand(new Card("Kh"), new Card("Kd"), new Card("3c"), new Card("3s"), new Card("2h"));
+        Hand h2 = new Hand(new Card("Kh"), new Card("Kd"), new Card("4c"), new Card("4s"), new Card("2h"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void twoPairVsTwoPairKickerBreaksTie()
+    {
+        Hand h1 = new Hand(new Card("Kh"), new Card("Kd"), new Card("3c"), new Card("3s"), new Card("2h"));
+        Hand h2 = new Hand(new Card("Kh"), new Card("Ks"), new Card("3c"), new Card("3h"), new Card("8d"));
+        assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+    @Test
+    public void highCardComparison()
+    {
+       Hand h1 =  new Hand(new Card("7h"), new Card("Th"), new Card("2c"), new Card("8h"), new Card("Jh"));
+       Hand h2 = new Hand(new Card("7h"), new Card("Th"), new Card("Qc"), new Card("8h"), new Card("Jh"));
+       assertEquals(2, e.compareHands(h1, h2));
+    }
+    
+//    @Test
+//    public void bestFiveCardHandFromSevenCardHand()
+//    {
+//        Hand h = new Hand(new Card("Ah"), new Card("Th"), new Card("Js"), new Card("Kc"), new Card("Jh"), new Card("4h"), new Card("Qh"));
+//        Hand bestHand = e.best5CardHand(h);
+//        assertEquals(Flush.class, e.handCategory(bestHand));
+//    }
 }

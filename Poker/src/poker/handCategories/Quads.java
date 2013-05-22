@@ -1,7 +1,6 @@
 
 
 package poker.handCategories;
-import poker.Evaluator;
 import poker.Hand;
 
 
@@ -21,21 +20,26 @@ public class Quads extends HandCategory
         int comparison =  super.compareTo(otherHandCategory);
         if (comparison != 0) { return comparison;}
         Quads other = (Quads) otherHandCategory;
-        int handValueThis = valueOfQuads(this.getHand());
-        int handValueThat = valueOfQuads(other.getHand());
+        int handValueThis = cardRank(this.getHand(), 4);
+        int handValueThat = cardRank(other.getHand(), 4);
         return handValueThis - handValueThat;        
     }         
     
-    private int valueOfQuads(Hand h)
+    
+
+    @Override
+    public int compareInternally(HandCategory otherHandCategory)
     {
-        int [] handFrequencies = Evaluator.calculateCardFrequencies(h);
-        for (int i = 0; i < handFrequencies.length; i++)
+        Quads other = (Quads) otherHandCategory;
+        int handValueThis = cardRank(this.getHand(), 4);
+        int handValueThat = cardRank(other.getHand(), 4);
+        int comparison = handValueThis - handValueThat;
+        if (comparison == 0)
         {
-            if (handFrequencies[i] == 4)
-            {
-                return i;
-            }
+            comparison = cardRank(this.getHand(), 1) - cardRank(other.getHand(), 1);
         }
-        return -1;
+        return comparison;
     }
+
+ 
 }

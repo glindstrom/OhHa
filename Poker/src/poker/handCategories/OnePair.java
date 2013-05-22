@@ -11,6 +11,12 @@ public class OnePair extends HandCategory
     {
         super(7, h);
     }       
+
+    @Override
+    public int compareInternally(HandCategory otherHandCategory)
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
     
 }
