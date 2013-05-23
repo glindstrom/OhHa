@@ -4,14 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 import poker.handCategories.*;
-
+/**
+ * Determines the winner of two poker hands. 
+ * 
+ */
 public class Evaluator
 {
 
+    /*
+     * Class constructor.
+     */
     public Evaluator()
     {
     }
-    
+    /**
+     * Evaluates two poker hands at showdown. If only one hand contains five cards, then that hand wins.
+     * If neither hand contains five cards they tie.
+     * @param h1 the first hand to be compared
+     * @param h2 the second hand to be compared
+     * @return Returns 1 if h1 wins, 2 if h2 wins and 0 if the hands tie.
+     */
     public int compareHands(Hand h1, Hand h2)
     {
         if (h1.size() != 5 && h2.size() != 5)
@@ -38,6 +50,7 @@ public class Evaluator
         return 0;
     }
 
+    // this method shoud be in separate class?
     public HandCategory handCategory(Hand h)
     {
         calculateCardFrequencies(h);
@@ -78,7 +91,7 @@ public class Evaluator
     }
     
     public Hand best5CardHand(Hand h)
-    {
+    {        
         return best5CardHandOutOfNcards(h, 7);
     }
 
@@ -155,7 +168,14 @@ public class Evaluator
         }
         return true;
     }
-        
+    
+    /**
+     * Counts how many times each card rank occurs in a hand.
+     * @param h the hand to be evaluated
+     * @return an array containing the number of times each of the 13 card ranks occurs. 
+     * The frequencies are in order of decreasing rank, so the number of aces is at index 0,
+     * and the number of deuces at index 12;
+     */
     public static int [] calculateCardFrequencies(Hand h)
     {
         int [] cardFrequencies = new int[13];

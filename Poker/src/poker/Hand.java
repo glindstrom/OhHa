@@ -13,28 +13,42 @@ import java.util.TreeSet;
 public class Hand 
 {
     private Set<Card> cards;
-        
+    
+    /**
+     * Class constructor.
+     */
     public Hand()
     {
         this.cards = new HashSet();
     }
     /**
      * Creates a hand containing the specified cards.
-     * @param cards The cards to be included in the hand.
+     * @param cards Specifies up to seven card objects to be included in the hand.
      */
     Hand(Card... cards)
     {
-        this.cards = new HashSet();
+        if (cards.length > 7)
+        {
+            throw new IllegalArgumentException("A hand can contain at most seven cards.");
+        }
+        if (cards == null)
+        {
+            throw new NullPointerException("Card must not be null");
+        }
         this.cards.addAll(Arrays.asList(cards));
     }            
     
     /**
      * Adds a card to the Hand. At most seven cards can be added to the hand.
-     * @param c The Card to be added.
+     * @param c the card to be added
      * @return Returns true if the card was successfully added, false otherwise.
      */
     public boolean addCard(Card c)
     {
+        if (c == null)
+        {
+            throw new NullPointerException("Card must not be null.");
+        }
         if (this.cards.size() == 7)
         {
             return false;
