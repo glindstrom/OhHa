@@ -23,8 +23,7 @@ public class Hand
     }
 
     /**
-     * Creates a hand containing the specified cards.
-     *
+     * Class constructor specifying the cards in the hand.
      * @param cards Specifies up to seven card objects to be included in the
      * hand.
      */
@@ -41,25 +40,32 @@ public class Hand
         }
         this.cards.addAll(Arrays.asList(cards));
     }
-
+    
+    /**
+     * Class constructor specifying the cards in the hand as a String.
+     * @param hand a string representation of the cards in the hand
+     */
     Hand(String hand)
     {
-        this.cards = new ArrayList();
+        this();
         for (int i = 0; i < hand.length(); i += 2)
         {
             String card = String.valueOf(hand.charAt(i)) + hand.charAt(i + 1);
             Card c = new Card(card);
-            this.cards.add(c);
+            if (!this.addCard(c))
+            {
+                throw new IllegalArgumentException("A hand can contain at most seven cards.");
+            }            
         }
     }
 
     /**
      * Adds a card to the Hand. At most seven cards can be added to the hand.
      *
-     * @param c the card to be added
+     * @param c the non-null card to be added
      * @return Returns true if the card was successfully added, false otherwise.
      */
-    public boolean addCard(Card c)
+    public final boolean addCard(Card c)
     {
         if (c == null)
         {
