@@ -12,3 +12,4 @@
 23.5.2013	4h 	Ohjelmointi
 23.5.2013	1h	Luokkakaavio
 23.5.2013	1,5h	Dokumentointi
+24.5.2013	6h	Refaktorointi ja dokumentointi
