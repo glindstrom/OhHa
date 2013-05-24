@@ -1,5 +1,6 @@
 package poker;
 
+import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -37,5 +38,14 @@ public class HandTest
         Hand h = new Hand(c);
         assertTrue(h.getCards().contains(c));
     }
+    
+     @Test
+    public void cardInHandMatchesConstructorUsingStringParameter()
+    {
+        Hand h = new Hand("3cAs3d5h6s");
+        Card c = new Card("3c");
+        assertTrue(h.getCards().contains(c));        
+    }
+
     
 }
