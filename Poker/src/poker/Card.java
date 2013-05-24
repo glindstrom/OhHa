@@ -53,17 +53,19 @@ public class Card implements Comparable<Card>
     {
         return suit;
     }        
-
+/**
+ * Compares two cards to each other.
+ * @param other the card this card is compared against
+ * @return a negative integer if this cars has higher rank, a positive integer
+ * if it has lower rank, and 0 if ranks are equal
+ */
     @Override
     public int compareTo(Card other)
     {
-        if (this.rank != other.rank)
-        {
-            return this.rank.compareTo(other.getRank());
-        }
-        return this.suit.compareTo(other.suit);
+        return this.rank.compareTo(other.getRank());
     }
 
+    
     @Override
     public boolean equals(Object otherObject)
     {
