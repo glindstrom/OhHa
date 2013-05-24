@@ -14,85 +14,7 @@ public class EvaluatorTest
         e = new Evaluator();
     }
 
-    @Test
-    public void handValueIsFourOfAKind()
-    {
-        Hand h = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("Qs"), new Card("2h"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(Quads.class, hc.getClass());
-    }
     
-    @Test
-    public void handValueIsFullHouse()
-    {
-        Hand h = new Hand(new Card("7s"), new Card("7h"), new Card("7c"), new Card("5c"), new Card("5d"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(FullHouse.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsThreeOfAKind()
-    {
-        Hand h = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("5s"), new Card("2h"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(ThreeOfAKind.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsTwoPair()
-    {
-        Hand h = new Hand(new Card("Qh"), new Card("Qd"), new Card("5c"), new Card("5s"), new Card("2h"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(TwoPair.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsOnePair()
-    {
-        Hand h = new Hand(new Card("Qh"), new Card("Qd"), new Card("5c"), new Card("7s"), new Card("2h"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(OnePair.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsFlush()
-    {
-        Hand h = new Hand(new Card("Ah"), new Card("Kh"), new Card("Th"), new Card("8h"), new Card("2h"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(Flush.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsStraight()
-    {
-        Hand h = new Hand(new Card("7h"), new Card("Ts"), new Card("9h"), new Card("8h"), new Card("Jh"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(Straight.class, hc.getClass());
-    }
-    
-    @Test
-    public void handValueIsStraightWhenAceIsLowestCard()
-    {
-        Hand h = new Hand(new Card("Ad"), new Card("4s"), new Card("5h"), new Card("3h"), new Card("2c"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(Straight.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsStraightFlush()
-    {
-        Hand h = new Hand(new Card("7h"), new Card("Th"), new Card("9h"), new Card("8h"), new Card("Jh"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(StraightFlush.class, hc.getClass());
-    }
-
-    @Test
-    public void handValueIsHighCard()
-    {
-        Hand h = new Hand(new Card("7h"), new Card("Th"), new Card("2c"), new Card("8h"), new Card("Jh"));
-        HandCategory hc = e.handCategory(h);
-        assertEquals(HighCard.class, hc.getClass());
-    }
     
     @Test
     public void handCategoryRankingIsCorrect()
@@ -233,6 +155,6 @@ public class EvaluatorTest
     {
         Hand h = new Hand(new Card("Ah"), new Card("Th"), new Card("Js"), new Card("Kc"), new Card("Jh"), new Card("4h"), new Card("Qh"));
         Hand bestHand = e.best5CardHand(h);
-        assertEquals(Flush.class, e.handCategory(bestHand).getClass());
+        assertEquals(Flush.class, HandCategory.extractHandCategory(bestHand).getClass());
     }
 }

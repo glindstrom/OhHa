@@ -2,9 +2,7 @@
 
 package poker.handCategories;
 
-import poker.Evaluator;
 import poker.Hand;
-
 
 public class ThreeOfAKind extends HandCategory
 {
@@ -20,8 +18,8 @@ public class ThreeOfAKind extends HandCategory
         int comparison =  cardRank(this.getHand(), 3) - cardRank(other.getHand(), 3);
         if (comparison == 0)
         {
-            int [] handFrequenciesThis = Evaluator.calculateCardFrequencies(this.getHand());
-            int [] handFrequenciesOther = Evaluator.calculateCardFrequencies(other.getHand());
+            int [] handFrequenciesThis = calculateCardFrequencies(this.getHand());
+            int [] handFrequenciesOther = calculateCardFrequencies(other.getHand());
             comparison = compareKickers(handFrequenciesThis, handFrequenciesOther);
         }        
         return comparison;
