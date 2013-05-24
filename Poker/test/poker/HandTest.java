@@ -1,7 +1,5 @@
 package poker;
 
-import java.util.ArrayList;
-import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -16,12 +14,11 @@ public class HandTest
     }
 
     @Test
-    public void addingMoreThanFiveCardsReturnsFalse()
+    public void addingMoreThanSevenCardsReturnsFalse()
     {
-        Hand h = new Hand();
-        addFiveCardsToHand(h);
-        Card c6 = new Card("As");
-        assertFalse(h.addCard(c6));
+        Hand h = new Hand(new Card("7h"), new Card("7d"), new Card("7c"), new Card("5s"), new Card("2h"), new Card("5h"), new Card("9c"));
+        Card c = new Card("As");
+        assertFalse(h.addCard(c));
     }
     
     @Test
@@ -40,29 +37,5 @@ public class HandTest
         Hand h = new Hand(c);
         assertTrue(h.getCards().contains(c));
     }
-
-    private void addFiveCardsToHand(Hand h)
-    {
-        List<Card> cards = createFiveCards();
-        for (Card c : cards)
-        {
-            h.addCard(c);           
-        }
-    }
-
-    private List<Card> createFiveCards()
-    {
-        List<Card> cards = new ArrayList();
-        Card c1 = new Card("7h");
-        Card c2 = new Card("3c");
-        Card c3 = new Card("Jh");
-        Card c4 = new Card("Qs");
-        Card c5 = new Card("Kc");
-        cards.add(c1);
-        cards.add(c2);
-        cards.add(c3);
-        cards.add(c4);
-        cards.add(c5);
-        return cards;
-    }
+    
 }
