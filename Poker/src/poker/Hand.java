@@ -25,8 +25,9 @@ public class Hand
      * Creates a hand containing the specified cards.
      * @param cards Specifies up to seven card objects to be included in the hand.
      */
-    Hand(Card... cards)
+    public Hand(Card... cards)
     {
+        this();
         if (cards.length > 7)
         {
             throw new IllegalArgumentException("A hand can contain at most seven cards.");
