@@ -1,6 +1,5 @@
 package poker;
 
-import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -39,13 +38,23 @@ public class HandTest
         assertTrue(h.getCards().contains(c));
     }
     
-     @Test
+    @Test
     public void cardInHandMatchesConstructorUsingStringParameter()
     {
         Hand h = new Hand("3cAs3d5h6s");
         Card c = new Card("3c");
         assertTrue(h.getCards().contains(c));        
     }
-
     
+    @Test (expected = IllegalArgumentException.class)
+    public void moreThanSevenCardsInConstructorCausesException()
+    {
+        Hand h = new Hand(new Card("7h"), new Card("7d"), new Card("7c"), new Card("5s"), new Card("2h"), new Card("5h"), new Card("9c"), new Card("Qh"));
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void moreThanSevenCardsInStringConstructorCausesException()
+    {
+        Hand h = new Hand("7sAc6h3dKc9d8sJh");
+    }
 }
