@@ -24,9 +24,7 @@ public class Quads extends HandCategory
         int handValueThat = cardRank(other.getHand(), 4);
         return handValueThis - handValueThat;        
     }         
-    
-    
-
+        
     @Override
     public int compareInternally(HandCategory otherHandCategory)
     {
@@ -40,6 +38,4 @@ public class Quads extends HandCategory
         }
         return comparison;
     }
-
- 
 }

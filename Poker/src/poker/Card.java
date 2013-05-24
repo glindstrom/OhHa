@@ -64,7 +64,6 @@ public class Card implements Comparable<Card>
     {
         return this.rank.compareTo(other.getRank());
     }
-
     
     @Override
     public boolean equals(Object otherObject)

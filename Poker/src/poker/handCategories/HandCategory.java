@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import poker.Card;
-import poker.Evaluator;
 import poker.Hand;
 import poker.Rank;
 
 /**
- *
- * @author Gabriel
+ *HandCategory is the abstract base class for the different hand types you can have
+ * at showdown.
+ * 
  */
 public abstract class HandCategory implements Comparable<HandCategory>
 {
@@ -193,10 +193,8 @@ public abstract class HandCategory implements Comparable<HandCategory>
     
     protected int compareRanksInHand(Hand h1, Hand h2)
     {
-        ArrayList<Card> thisCards = new ArrayList();
-        ArrayList<Card> otherCards = new ArrayList();
-        thisCards.addAll(h1.getCards());
-        otherCards.addAll(h2.getCards());
+        List<Card> thisCards = h1.getCards();
+        List<Card> otherCards = h2.getCards();       
         for (int i = 0; i < Math.min(thisCards.size(), otherCards.size()); i++)
         {
             int rankComparison = thisCards.get(i).getRank().compareTo(otherCards.get(i).getRank());
