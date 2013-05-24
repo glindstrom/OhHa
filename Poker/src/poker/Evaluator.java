@@ -1,8 +1,8 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
 import poker.handCategories.*;
 /**
  * Determines the winner of two poker hands. 
@@ -50,7 +50,7 @@ public class Evaluator
         return 0;
     }
 
-    // this method shoud be in separate class?
+    // this method should be in separate class?
     public HandCategory handCategory(Hand h)
     {
         calculateCardFrequencies(h);
@@ -139,8 +139,8 @@ public class Evaluator
 
     private boolean findFlush(Hand h)
     {
-        TreeSet<Card> cards = h.getCards();
-        Card card = cards.pollFirst();
+        List<Card> cards = h.getCards();
+        Card card = cards.remove(0);
         for (Card c : cards)
         {
             if (c.getSuit() != card.getSuit())
@@ -153,8 +153,8 @@ public class Evaluator
 
     private boolean findStraight(Hand h)
     {
-        List<Card> cards = new ArrayList<>();
-        cards.addAll(h.getCards());
+        List<Card> cards = h.getCards();
+        Collections.sort(cards);
         if (cards.get(0).getRank() == Rank.ACE && cards.get(1).getRank() == Rank.FIVE)
         {
             return true;
@@ -189,8 +189,7 @@ public class Evaluator
     private Hand best5CardHandOutOfNcards(Hand h, int n)
     {   
         Hand bestHand = new Hand();
-        ArrayList<Card> cards = new ArrayList();
-        cards.addAll(h.getCards());
+        List<Card> cards = h.getCards();
         for (int i = 0; i < n ; i++)
         {
             for (int j = i+1; j < n; j++)
@@ -217,5 +216,5 @@ public class Evaluator
             }
         }
         return bestHand;
-    }
+    }        
 }

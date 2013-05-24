@@ -18,8 +18,8 @@ public class Straight extends HandCategory
     public int compareInternally(HandCategory otherHandCategory)
     {
         Straight other = (Straight) otherHandCategory;
-        TreeSet<Card> thisCards = this.getHand().getCards();
-        TreeSet<Card> otherCards = other.getHand().getCards();
+        TreeSet<Card> thisCards = new TreeSet(this.getHand().getCards());
+        TreeSet<Card> otherCards = new TreeSet(other.getHand().getCards());
         Rank highestRankThis = thisCards.pollFirst().getRank();
         Rank highestRankOther = otherCards.pollFirst().getRank();
         if (highestRankThis == Rank.ACE && highestRankOther == Rank.ACE)

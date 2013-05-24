@@ -2,24 +2,23 @@
 
 package poker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.List;
 /**
  * A Hand object represents a poker hand containing at most seven cards.
  * @see Card
  */
 public class Hand 
 {
-    private Set<Card> cards;
+    private List<Card> cards;
     
     /**
      * Class constructor.
      */
     public Hand()
     {
-        this.cards = new HashSet();
+        this.cards = new ArrayList();
     }
     /**
      * Creates a hand containing the specified cards.
@@ -61,14 +60,14 @@ public class Hand
      * Returns the cards in the hand.
      * @return A shallow copy of the set of cards.
      */
-    public TreeSet<Card> getCards()
+    public List<Card> getCards()
     {
-        return new TreeSet<>(this.cards);
+        return new ArrayList<>(this.cards);
     }  
     
     /**
      * Returns number of cards in hand.
-     * @return An integer in the interval [0,7]. 
+     * @return integer in the interval [0,7]. 
      */
     public int size()
     {
