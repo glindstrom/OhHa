@@ -4,17 +4,21 @@ package poker.handCategories;
 
 import poker.Hand;
 
-public class ThreeOfAKind extends HandCategory
+/**
+ * Represents three of a kind, the sixth strongest hand category.
+ * 
+ */
+public class Trips extends HandCategory
 {
-    public ThreeOfAKind(Hand h)
+    protected Trips(Hand h)
     {
         super(5, h);
     }
 
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
-        ThreeOfAKind other = (ThreeOfAKind) otherHandCategory;
+        Trips other = (Trips) otherHandCategory;
         int comparison =  cardRank(this.getHand(), 3) - cardRank(other.getHand(), 3);
         if (comparison == 0)
         {

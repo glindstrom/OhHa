@@ -4,15 +4,19 @@ package poker.handCategories;
 
 import poker.Hand;
 
+/**
+ * Represents two pair, the seventh strongest hand category.
+ * 
+ */
 public class TwoPair extends HandCategory
 {
-    public TwoPair(Hand h)
+    protected TwoPair(Hand h)
     {
         super(6, h);
     }
 
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
         TwoPair other = (TwoPair) otherHandCategory;
         int [] handFrequenciesThis = calculateCardFrequencies(this.getHand());

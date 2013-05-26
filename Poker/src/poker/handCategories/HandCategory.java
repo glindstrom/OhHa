@@ -1,7 +1,6 @@
 
 package poker.handCategories;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import poker.Card;
@@ -18,7 +17,7 @@ public abstract class HandCategory implements Comparable<HandCategory>
     private int ordinal;
     private Hand hand;
     
-    public HandCategory (int ordinal, Hand h)
+    protected HandCategory (int ordinal, Hand h)
     {
         this.ordinal = ordinal;
         this.hand = h;
@@ -48,7 +47,7 @@ public abstract class HandCategory implements Comparable<HandCategory>
         }
         if (findThreeOfAKind(h))
         {
-            return new ThreeOfAKind(h);
+            return new Trips(h);
         }
         if (findTwoPair(h))
         {
@@ -165,7 +164,7 @@ public abstract class HandCategory implements Comparable<HandCategory>
         return cardFrequencies;
     }
     
-    public abstract int compareInternally(HandCategory otherHandCategory);
+    protected abstract int compareInternally(HandCategory otherHandCategory);
     
     @Override
     public int compareTo(HandCategory other)

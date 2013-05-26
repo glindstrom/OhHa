@@ -4,16 +4,19 @@ package poker.handCategories;
 
 import poker.Hand;
 
-
+/**
+ * Represents a full house, the third strongest hand category.
+ *
+ */
 public class FullHouse extends HandCategory
 {
-    public FullHouse(Hand h)
+    protected FullHouse(Hand h)
     {
         super(2, h);
     }
 
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
         FullHouse other = (FullHouse) otherHandCategory;
         int comparison = this.cardRank(this.getHand(), 3) - other.cardRank(other.getHand(), 3);

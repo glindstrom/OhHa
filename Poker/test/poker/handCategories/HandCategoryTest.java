@@ -41,7 +41,7 @@ public class HandCategoryTest
     {
         Hand h = new Hand(new Card("Qh"), new Card("Qd"), new Card("Qc"), new Card("5s"), new Card("2h"));
         HandCategory hc = HandCategory.extractHandCategory(h);
-        assertEquals(ThreeOfAKind.class, hc.getClass());
+        assertEquals(Trips.class, hc.getClass());
     }
 
     @Test

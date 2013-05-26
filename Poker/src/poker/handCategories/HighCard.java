@@ -4,16 +4,19 @@ package poker.handCategories;
 
 import poker.Hand;
 
-
+/**
+ * Represents hight cards, the weakest hand category.
+ * 
+ */
 public class HighCard extends HandCategory
 {
-    public HighCard(Hand h)
+    protected HighCard(Hand h)
     {
         super(8, h);
     }
 
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
         HighCard other = (HighCard) otherHandCategory;
         return compareRanksInHand(this.getHand(), other.getHand());

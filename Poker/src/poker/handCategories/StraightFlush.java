@@ -6,18 +6,21 @@ import java.util.TreeSet;
 import poker.Card;
 import poker.Hand;
 
-
+/**
+ * Represents a straight flush, the strongest hand category.
+ * 
+ */
 public class StraightFlush extends HandCategory
 {
     
-    public StraightFlush(Hand h)
+    protected StraightFlush(Hand h)
     {
         super(0, h);
         
     }        
 
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
         StraightFlush other = (StraightFlush) otherHandCategory;
         TreeSet<Card> thisCards = new TreeSet(this.getHand().getCards());

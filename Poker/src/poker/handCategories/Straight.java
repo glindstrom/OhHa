@@ -7,15 +7,19 @@ import poker.Card;
 import poker.Hand;
 import poker.Rank;
 
+/**
+ * Represents a straight, the fifth strongest hand category.
+ * 
+ */
 public class Straight extends HandCategory
 {
-    public Straight(Hand h)
+    protected Straight(Hand h)
     {
         super(4, h);
     }
 
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
         Straight other = (Straight) otherHandCategory;
         TreeSet<Card> thisCards = new TreeSet(this.getHand().getCards());

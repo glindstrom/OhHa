@@ -3,12 +3,14 @@
 package poker.handCategories;
 import poker.Hand;
 
-
-
+/**
+ * Represents four of a kind, the second strongest hand category.
+ * 
+ */
 public class Quads extends HandCategory
 {
    
-    public Quads(Hand h)
+    protected Quads(Hand h)
     {
         super(1, h);
         
@@ -26,7 +28,7 @@ public class Quads extends HandCategory
     }         
         
     @Override
-    public int compareInternally(HandCategory otherHandCategory)
+    protected int compareInternally(HandCategory otherHandCategory)
     {
         Quads other = (Quads) otherHandCategory;
         int handValueThis = cardRank(this.getHand(), 4);
