@@ -12,7 +12,10 @@ import poker.Hand;
  */
 public class StraightFlush extends HandCategory
 {
-    
+    /**
+     * Class constructor.
+     * @param h a hand, whose value is straight flush
+     */
     protected StraightFlush(Hand h)
     {
         super(0, h);

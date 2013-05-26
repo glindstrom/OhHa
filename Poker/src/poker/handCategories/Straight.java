@@ -13,6 +13,10 @@ import poker.Rank;
  */
 public class Straight extends HandCategory
 {
+    /**
+     * Class constructor.
+     * @param h a hand, whose value is straight
+     */
     protected Straight(Hand h)
     {
         super(4, h);

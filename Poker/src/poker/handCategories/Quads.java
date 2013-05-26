@@ -9,7 +9,10 @@ import poker.Hand;
  */
 public class Quads extends HandCategory
 {
-   
+   /**
+    * Class constructor.
+    * @param h a hand, whose value is four of a kind
+    */
     protected Quads(Hand h)
     {
         super(1, h);

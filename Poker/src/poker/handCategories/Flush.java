@@ -10,6 +10,10 @@ import poker.Hand;
  */
 public class Flush extends HandCategory
 {
+    /**
+     * Class constructor.
+     * @param h a hand, whose value is flush
+     */
     protected Flush(Hand h)
     {
         super(3, h);

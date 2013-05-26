@@ -10,6 +10,10 @@ import poker.Hand;
  */
 public class TwoPair extends HandCategory
 {
+    /**
+     * Class constructor.
+     * @param h a hand, whose value is two pair
+     */
     protected TwoPair(Hand h)
     {
         super(6, h);

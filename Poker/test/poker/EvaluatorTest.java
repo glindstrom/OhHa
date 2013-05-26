@@ -79,9 +79,10 @@ public class EvaluatorTest
     @Test
     public void higherFlushBeatsLowerFlush()
     {
-         Hand h1 = new Hand(new Card("Ah"), new Card("Kh"), new Card("Th"), new Card("5h"), new Card("2h")); 
-         Hand h2 = new Hand(new Card("Ah"), new Card("Kh"), new Card("Th"), new Card("7h"), new Card("2h")); 
+         Hand h1 = new Hand(new Card("Th"), new Card("Kh"), new Card("Ah"), new Card("5h"), new Card("2h")); 
+         Hand h2 = new Hand(new Card("7h"), new Card("Kh"), new Card("Th"), new Card("Ah"), new Card("2h")); 
          assertEquals(2, e.compareHands(h1, h2));
+         assertEquals(1, e.compareHands(h2, h1));
     }
     
     @Test

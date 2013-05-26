@@ -10,6 +10,10 @@ import poker.Hand;
  */
 public class FullHouse extends HandCategory
 {
+    /**
+     * Class constructor.
+     * @param h a hand, whose value is full house
+     */
     protected FullHouse(Hand h)
     {
         super(2, h);

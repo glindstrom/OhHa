@@ -10,6 +10,10 @@ import poker.Hand;
  */
 public class Trips extends HandCategory
 {
+    /**
+     * Class constructor.
+     * @param h a hand, whose value is three of a kind
+     */
     protected Trips(Hand h)
     {
         super(5, h);

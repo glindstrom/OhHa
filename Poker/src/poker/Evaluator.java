@@ -48,11 +48,22 @@ public class Evaluator
         return 0;
     }
 
+    /**
+     * Returns the best 5-card poker hand you can make from a 7-card hand.
+     * @param h the 7-card hand to be evaluated
+     * @return the best 5-card hand you can make from a 7-card hand
+     */
     public Hand best5CardHand(Hand h)
     {        
         return best5CardHandOutOfNcards(h, 7);
     }
 
+    /**
+     * Returns the best 5-card poker hand you can make from a n-card hand.
+     * @param h the hand to be evaluated
+     * @param n the number of cards in the hand
+     * @return the best 5-card hand you can make from the given hand
+     */
     private Hand best5CardHandOutOfNcards(Hand h, int n)
     {   
         Hand bestHand = new Hand();

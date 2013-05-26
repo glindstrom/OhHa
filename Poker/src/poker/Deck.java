@@ -68,6 +68,10 @@ public class Deck
         initDeck();
     }
 
+    /**
+     * Clears the deck and adds all cards in suit and rank order. The suits are
+     * ordered from spades to clubs and the ranks from ace to deuce.
+     */
     private void initDeck()
     {
         this.cards.clear();
