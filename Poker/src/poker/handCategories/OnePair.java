@@ -18,6 +18,13 @@ public class OnePair extends HandCategory
     @Override
     protected int compareInternally(HandCategory otherHandCategory)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        OnePair other = (OnePair) otherHandCategory;
+        int pairRankThis = cardRank(this.getHand(), 2);
+        int pairRankOther = cardRank(other.getHand(), 2);
+        if (pairRankThis != pairRankOther)
+        {
+            return pairRankThis - pairRankOther;
+        }
+        return compareKickers(calculateCardFrequencies(this.getHand()), calculateCardFrequencies(other.getHand()));
     }        
 }

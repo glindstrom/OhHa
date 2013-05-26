@@ -12,9 +12,7 @@ public class EvaluatorTest
     public void setUp()
     {
         e = new Evaluator();
-    }
-
-    
+    }   
     
     @Test
     public void handCategoryRankingIsCorrect()
@@ -143,11 +141,30 @@ public class EvaluatorTest
     }
     
     @Test
+    public void onePairVsOnePairHigherPairWins()
+    {
+         Hand h1 = new Hand(new Card("Qh"), new Card("Qd"), new Card("5c"), new Card("7s"), new Card("2h"));
+         Hand h2 = new Hand(new Card("Kh"), new Card("Kd"), new Card("5c"), new Card("7s"), new Card("2h"));
+         assertEquals(2, e.compareHands(h1, h2));
+         assertEquals(1, e.compareHands(h2, h1));
+    }
+    
+    @Test 
+    public void onePairVsOnePairKickerBreaksTie()
+    {
+         Hand h1 = new Hand(new Card("Kh"), new Card("Kd"), new Card("5c"), new Card("9s"), new Card("2h"));
+         Hand h2 = new Hand(new Card("Kh"), new Card("Kd"), new Card("5c"), new Card("8s"), new Card("2h"));
+         assertEquals(1, e.compareHands(h1, h2));
+         assertEquals(2, e.compareHands(h2, h1)); 
+    }
+    
+    @Test
     public void highCardComparison()
     {
        Hand h1 =  new Hand(new Card("7h"), new Card("Th"), new Card("2c"), new Card("8h"), new Card("Jh"));
        Hand h2 = new Hand(new Card("7h"), new Card("Th"), new Card("Qc"), new Card("8h"), new Card("Jh"));
        assertEquals(2, e.compareHands(h1, h2));
+       assertEquals(1, e.compareHands(h2, h1));
     }
     
     @Test

@@ -16,7 +16,7 @@ public class TwoPair extends HandCategory
     }
 
     @Override
-    protected int compareInternally(HandCategory otherHandCategory)
+    public int compareInternally(HandCategory otherHandCategory)
     {
         TwoPair other = (TwoPair) otherHandCategory;
         int [] handFrequenciesThis = calculateCardFrequencies(this.getHand());
@@ -32,7 +32,7 @@ public class TwoPair extends HandCategory
                 return 1;
             }
         }
-        return compareKickers(handFrequenciesThis, handFrequenciesOther)  ;
+        return compareKickers(handFrequenciesThis, handFrequenciesOther);
     }
 
 
