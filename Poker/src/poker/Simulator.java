@@ -22,10 +22,8 @@ public class Simulator
      */
     public Simulator()
     {
+        resetStats();
         this.deck = new Deck();
-        this.wins = 0;
-        this.losses = 0;
-        this.ties = 0;
         this.trials = 50000;
         this.evaluator = new Evaluator();
     }
@@ -57,6 +55,7 @@ public class Simulator
     
     public void simulate(String holeCards1, String holeCards2)
     {
+        resetStats();
         this.holeCards1 = new Hand(holeCards1);
         this.holeCards2 = new Hand(holeCards2);
         
@@ -82,9 +81,14 @@ public class Simulator
         return this.holeCards2.toString();
     }
     
-    public double getEquity1()
+    public double equity1()
     {
         return winPercentage() + 0.5*tiePercentage();
+    }
+    
+    public double equity2()
+    {
+        return lossPercentage() + 0.5*tiePercentage();
     }
     
     public double lossPercentage()
@@ -138,10 +142,17 @@ public class Simulator
         }
     }
     
+    private void resetStats()
+    {
+        this.wins = 0;
+        this.losses = 0;
+        this.ties = 0;
+    }
+    
     public static void main(String[] args)
     {
         Simulator sim = new Simulator();
-        sim.simulate("5d5s", "2c2d");
-        System.out.println(sim.getEquity1());        
+        sim.simulate("QdTs", "7c7d");
+        System.out.println(sim.equity1());        
     }
 }

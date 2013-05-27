@@ -51,13 +51,29 @@ public class SimulatorTest
     public void equityOfAAvsAAis50()
     {
         sim.simulate("AdAc", "AhAs");
-        assertEquals(0.5, sim.getEquity1(), 0.02);
+        assertEquals(0.5, sim.equity1(), 0.02);
     }
     
     @Test
     public void equityOfJTsVs22isCorrect()
     {
         sim.simulate("5d5s", "2c2d");
-        assertEquals(0.815, sim.getEquity1(), 0.02);
+        assertEquals(0.815, sim.equity1(), 0.02);
+    }
+    
+    @Test
+    public void twoSimulationsInRowWorks()
+    {
+        sim.simulate("AdAc", "AhAs");
+        assertEquals(0.5, sim.equity1(), 0.02);
+        sim.simulate("5d5s", "2c2d");
+        assertEquals(0.815, sim.equity1(), 0.02);
+    }
+    
+    @Test
+    public void equitiesAddToOne()
+    {
+        sim.simulate("5h4d", "Tc7c");
+        assertEquals(1.0, sim.equity1() + sim.equity2(), 0.000001);
     }
 }
