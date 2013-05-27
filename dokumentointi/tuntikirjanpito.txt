@@ -15,3 +15,4 @@
 24.5.2013	6h	Refaktorointi ja dokumentointi
 26.5.2013	1h	Ohjelmointi
 26.5.2013	3h 	Dokumentointi
+27.5.2013	4h	Ohjelmointi
