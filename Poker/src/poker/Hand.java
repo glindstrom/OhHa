@@ -11,7 +11,9 @@ import java.util.List;
  */
 public class Hand
 {
-
+    /**
+     * the cards in the hand
+     */
     private List<Card> cards;
 
     /**
@@ -66,8 +68,9 @@ public class Hand
     /**
      * Adds a card to the Hand. At most seven cards can be added to the hand.
      *
-     * @param c the non-null card to be added
-     * @return Returns true if the card was successfully added, false otherwise.
+     * @param c the card to be added
+     * @return true if the card was successfully added, false otherwise
+     * @throws NullPointerException if c == null
      */
     public final boolean addCard(Card c)
     {
@@ -101,4 +104,38 @@ public class Hand
     {
         return this.cards.size();
     }
+    
+    /**
+     * Combines the cards from two hands to form a new hand.
+     * @param h1 the first hand
+     * @param h2 the second hand
+     * @return a hand containing the cards in h1 and h2
+     */
+    public static Hand mergeHands(Hand h1, Hand h2)
+    {
+        Hand h = new Hand();
+        for (Card c : h1.cards)
+        {
+            h.addCard(c);
+        }
+        for (Card c : h2.cards)
+        {
+            h.addCard(c);
+        }
+        return h;
+    }
+
+    @Override
+    public String toString()
+    {
+        String hand = "";
+        for (Card c : this.cards)
+        {
+            hand += c.toString(); 
+        }
+        
+        return hand;
+    }
+    
+    
 }

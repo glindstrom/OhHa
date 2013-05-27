@@ -92,6 +92,15 @@ public class Card implements Comparable<Card>
         hash = 47 * hash + (this.suit != null ? this.suit.hashCode() : 0);
         return hash;
     }
+
+    @Override
+    public String toString()
+    {
+        String card = "";
+        card += rank.getAbbreviation();
+        card += suit.getAbbreviation();
+        return card;
+    }
     
     
 }

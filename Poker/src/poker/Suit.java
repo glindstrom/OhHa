@@ -9,19 +9,19 @@ public enum Suit
     /**
      * Ordinal value 0.
      */
-    SPADES('S'), 
+    SPADES('s'), 
     /**
      * Ordinal value 1.
      */
-    HEARTS('H'), 
+    HEARTS('h'), 
     /**
      * Ordinal value 2.
      */
-    DIAMONDS('D'), 
+    DIAMONDS('d'), 
     /**
      * Ordinal value 3.
      */
-    CLUBS('C');
+    CLUBS('c');
     
     private char abbreviation;
     
@@ -40,11 +40,18 @@ public enum Suit
     {
         for (Suit suit : Suit.values())
         {
-            if (suit.abbreviation == Character.toUpperCase(c))
+            if (suit.abbreviation == Character.toLowerCase(c))
             {
                 return suit;
             }
         }
         throw new IllegalArgumentException();
     }
+
+    public char getAbbreviation()
+    {
+        return abbreviation;
+    }
+    
+    
 }

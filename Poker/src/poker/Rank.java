@@ -84,4 +84,9 @@ public enum Rank
         }
         throw new IllegalArgumentException();
     }
+
+    public char getAbbreviation()
+    {
+        return abbreviation;
+    }        
 }
