@@ -20,7 +20,7 @@ public class Gui implements Runnable
     public void run()
     {
         frame = new JFrame("Texas Hold'em Equity Calculator");
-        frame.setPreferredSize(new Dimension(400, 100));
+        frame.setPreferredSize(new Dimension(400, 200));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         createComponents(frame.getContentPane());
@@ -34,21 +34,26 @@ public class Gui implements Runnable
 
     private void createComponents(Container container)
     {
-        container.add(createInputArea());
-        JTextArea output = new JTextArea();
+        JTextArea output = new JTextArea(6,1);
         output.setEditable(false);
+        container.add(createInputArea(output));       
         container.add(output, BorderLayout.SOUTH);
     }
     
-    private JPanel createInputArea()
+    private JPanel createInputArea(JTextArea output)
     {
         JPanel panel = new JPanel(new GridLayout(4,2));
         panel .add(new JLabel("Hand:"));
-        panel.add(new JTextField());
+        JTextField hand1 = new JTextField();
+        panel.add(hand1);
         panel.add(new JLabel("Hand:"));
-        panel.add(new JTextField());
+        JTextField hand2 = new JTextField();
+        panel.add(hand2);
         panel.add(new JLabel());
-        panel.add(new JButton("Simulate"));
+        JButton simulateButton = new JButton("Simulate");
+        SimulationListener listener = new SimulationListener(this.sim, hand1, hand2, output);
+        simulateButton.addActionListener(listener);
+        panel.add(simulateButton);
         panel.add(new JLabel());
         panel.add(new JLabel());
         return panel;
