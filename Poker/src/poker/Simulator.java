@@ -218,7 +218,11 @@ public class Simulator
         this.losses = 0;
         this.ties = 0;
     }
-
+    
+    /**
+     * Checks that the hand has correct length.
+     * @param hand a string representation of a hand.
+     */
     private void checkHand(String hand)
     {
         if (hand.length() != 4)
@@ -226,4 +230,32 @@ public class Simulator
             throw new IllegalArgumentException(hand + " is not a valid hand - expected 2 cards but got " + hand.length()/2);
         }
     }
+
+    @Override
+    public String toString()
+    {
+        String [] stringArray = {"Hand", "Equity", "Wins", "Ties",
+            this.printHand1(), decimalToPercentageString(this.equity1()), Integer.toString(wins) ,Integer.toString(ties), 
+            this.printHand2(), decimalToPercentageString(this.equity2()), Integer.toString(losses), Integer.toString(ties)
+        };
+        String s = "";
+        for (int i = 0; i < stringArray.length; i++)
+        {
+            if ((i+1) % 4 != 0)
+            {
+                s +=  String.format("%-15s", stringArray[i]);
+            }
+            else
+            {
+                s += stringArray[i] + "\n";
+            }
+        }
+        return s;
+    }
+    
+    private String decimalToPercentageString(double d)
+    {
+        return String.format("%.4g", 100*d) + " %";
+    }
+    
 }
