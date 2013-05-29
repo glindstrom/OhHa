@@ -106,6 +106,8 @@ public class Simulator
      */
     public void simulate(String hand1, String hand2)
     {
+        checkHand(hand1);
+        checkHand(hand2);
         resetStats();
         this.holeCards1 = new Hand(hand1);
         this.holeCards2 = new Hand(hand2);
@@ -216,11 +218,12 @@ public class Simulator
         this.losses = 0;
         this.ties = 0;
     }
-    
-    public static void main(String[] args)
+
+    private void checkHand(String hand)
     {
-        Simulator sim = new Simulator();
-        sim.simulate("QdTs", "7c7d");
-        System.out.println(sim.equity1());        
+        if (hand.length() != 4)
+        {
+            throw new IllegalArgumentException(hand + " is not a valid hand - expected 2 cards but got " + hand.length()/2);
+        }
     }
 }

@@ -24,12 +24,18 @@ public class SimulationListener implements ActionListener
         this.output = output;
     }
     
-
     @Override
     public void actionPerformed(ActionEvent ae)
     {
-        sim.simulate(hand1.getText(), hand2.getText());
-        output.setText("" + sim.equity1());
+        try
+        {
+            sim.simulate(hand1.getText(), hand2.getText());
+            output.setText("" + sim.equity1());
+        }
+        catch (RuntimeException e)
+        {
+            output.setText(e.getMessage());      
+        }
     }
 
 }

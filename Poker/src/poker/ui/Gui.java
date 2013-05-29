@@ -19,7 +19,6 @@ public class Gui implements Runnable
         this.sim = sim;
     }
     
-
     @Override
     public void run()
     {
@@ -32,9 +31,7 @@ public class Gui implements Runnable
         frame.pack();
         frame.setVisible(true);
         
-    }
-    
-   
+    }       
 
     private void createComponents(Container container)
     {
