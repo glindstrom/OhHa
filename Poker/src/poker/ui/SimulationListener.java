@@ -29,7 +29,7 @@ public class SimulationListener implements ActionListener
     {
         try
         {
-            sim.simulate(hand1.getText(), hand2.getText());
+            sim.simulate(hand1.getText().trim(), hand2.getText().trim());
             output.setText(sim.toString());
         }
         catch (RuntimeException e)

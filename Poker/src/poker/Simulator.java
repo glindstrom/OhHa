@@ -255,7 +255,23 @@ public class Simulator
     
     private String decimalToPercentageString(double d)
     {
-        return String.format("%.4g", 100*d) + " %";
+        return String.format("%.2f", 100*d) + "%";
+    }
+    
+    public static void main(String[] args)
+    {
+//        int i = 183;
+//        System.out.print(String.format("%-15s", "Hand"));
+//        System.out.print(String.format("%-15s", "Equity"));
+//        System.out.print(String.format("%-15s", "Wins"));
+//        System.out.println(String.format("%-15s", "Ties"));
+//        System.out.print(String.format("%-15s", "AdKc"));
+//        String per = String.format("%.2f", 100*0.574268) + " %";
+//        System.out.print(String.format("%-15s", per));
+//        System.out.print(String.format("%-15s", Integer.toString(i)));
+        Simulator sim = new Simulator();
+        sim.simulate("AdKc", "6c5d");
+        System.out.println(sim.toString());
     }
     
 }
