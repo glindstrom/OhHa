@@ -36,6 +36,8 @@ public class Gui implements Runnable
     private void createComponents(Container container)
     {
         JTextArea output = new JTextArea(6,1);
+        Font font = new Font("Courier new",Font.PLAIN, 12);
+        output.setFont(font);
         output.setEditable(false);
         container.add(createInputArea(output));       
         container.add(output, BorderLayout.SOUTH);
