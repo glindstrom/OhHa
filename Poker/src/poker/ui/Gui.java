@@ -6,6 +6,10 @@ import java.awt.*;
 import javax.swing.*;
 import poker.Simulator;
 
+/**
+ * Provides a graphical user interface for a poker simulator.
+ * 
+ */
 public class Gui implements Runnable
 {
     private JFrame frame;

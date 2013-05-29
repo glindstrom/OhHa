@@ -3,18 +3,42 @@
 package poker;
 
 /**
- * Calculates the pre-flop all-in equity for two Hold'em hands. 
+ * Calculates the pre-flop all-in equity for two Hold'em hands using a Monte Carlo simulation. 
  * 
  */
 public class Simulator 
 {
+    /**
+     * The number of times hand1 won.
+     */
     private int wins;
+    /**
+     * The number of times hand1 lost.
+     */
     private int losses;
+    /**
+     * The number of times the hands tied.
+     */
     private int ties;
+    /**
+     * The number of random boards dealt.
+     */
     private int trials;
+    /**
+     * The first hand.
+     */
     private Hand holeCards1;
+    /**
+     * The second hand.
+     */
     private Hand holeCards2;
+    /**
+     * A deck of cards.
+     */
     private Deck deck;
+    /**
+     * A hand evaluator.
+     */
     private Evaluator evaluator;
     
     /**
@@ -48,16 +72,43 @@ public class Simulator
         return trials;
     }
     
+    /**
+     * Calculates the winning percentage of the first hand.
+     * @return the winning percentage expressed in decimal format
+     */
     public double winPercentage()
     {
         return 1.0*this.wins/trials;
     }
     
-    public void simulate(String holeCards1, String holeCards2)
+    /**
+     * Calculates the loss percentage of the first hand.
+     * @return the loss percentage expressed in decimal format
+     */
+     public double lossPercentage()
+    {
+        return 1.0*losses/trials;
+    }
+     
+    /**
+     * Calculates the tie percentage.
+     * @return the tie percentage expressed in decimal format
+     */ 
+    public double tiePercentage()
+    {
+        return 1.0*ties/trials;
+    }
+    
+    /**
+     * Calculates the equity of two hands.
+     * @param hand1 string expression of the first hand
+     * @param hand2 string expression of the second hand
+     */
+    public void simulate(String hand1, String hand2)
     {
         resetStats();
-        this.holeCards1 = new Hand(holeCards1);
-        this.holeCards2 = new Hand(holeCards2);
+        this.holeCards1 = new Hand(hand1);
+        this.holeCards2 = new Hand(hand2);
         
         for (int i = 0; i < this.trials; i++)
         {
@@ -81,25 +132,30 @@ public class Simulator
         return this.holeCards2.toString();
     }
     
+    /**
+     * Calculates the equity of the first hand.
+     * Equity is defined as winning percentage + tie percentage / 2. For example,
+     * if the pot size is 100 and the equity is 60 %, it means that the expected
+     * stack size is 0.6*100=60.
+     * @return the equity expressed as a decimal number
+     */
     public double equity1()
     {
         return winPercentage() + 0.5*tiePercentage();
     }
     
+    /**
+     * Calculates the equity of the second hand.
+     * @return the equity expressed as a decimal number
+     */
     public double equity2()
     {
         return lossPercentage() + 0.5*tiePercentage();
     }
     
-    public double lossPercentage()
-    {
-        return 1.0*losses/trials;
-    }
-
-    public double tiePercentage()
-    {
-        return 1.0*ties/trials;
-    }
+    /**
+     * Removes the hole cards from the deck.
+     */
     private void removeHoleCardsFromDeck()
     {
         for (Card c : this.holeCards1.getCards())
@@ -111,7 +167,11 @@ public class Simulator
             this.deck.remove(c);
         }
     }
-
+    
+    /**
+     * Deals the board.
+     * @return a 5-card hand
+     */
     private Hand deal5cards()
     {
         Hand h = new Hand();
@@ -123,6 +183,11 @@ public class Simulator
         return h;
     }
 
+    /**
+     * Updates the counters after performed simulation.
+     * @param h1 The board + hole cards of the first hand.
+     * @param h2 The board + hole cards of the second hand.
+     */
     private void updateResults(Hand h1, Hand h2)
     {
         Hand bestHand1 = this.evaluator.best5CardHand(h1);
@@ -142,6 +207,9 @@ public class Simulator
         }
     }
     
+    /**
+     * Sets all counters to zero.
+     */
     private void resetStats()
     {
         this.wins = 0;
