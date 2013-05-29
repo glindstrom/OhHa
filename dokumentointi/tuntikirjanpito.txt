@@ -17,3 +17,4 @@
 26.5.2013	3h 	Dokumentointi
 27.5.2013	4h	Ohjelmointi
 28.5.2013	5h	Ohjelmointi
+29.5.2013 	5h	Ohjelmointi ja dokumenotinti
