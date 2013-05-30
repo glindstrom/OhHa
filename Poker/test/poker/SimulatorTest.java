@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package poker;
 
 import static org.junit.Assert.*;
@@ -36,8 +33,8 @@ public class SimulatorTest
         String hc1 = "AdAh";
         String hc2 = "KsKc";
         sim.simulate("AdAh", "KsKc");
-        assertEquals(hc1, sim.printHand1());
-        assertEquals(hc2, sim.printHand2());
+        assertEquals(hc1, sim.hand1ToString());
+        assertEquals(hc2, sim.hand2ToString());
     }
    
     @Test
@@ -71,9 +68,16 @@ public class SimulatorTest
     }
     
     @Test
-    public void equitiesAddToOne()
+    public void equitiesAddUpToOne()
     {
         sim.simulate("5h4d", "Tc7c");
         assertEquals(1.0, sim.equity1() + sim.equity2(), 0.000001);
     }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void tooManyCardsLeadsToException()
+    {
+        sim.simulate("AcKsQ", "AsKd");
+    }
+    
 }

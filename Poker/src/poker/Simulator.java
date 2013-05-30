@@ -124,12 +124,12 @@ public class Simulator
         }
     }
     
-    public String printHand1()
+    public String hand1ToString()
     {
         return this.holeCards1.toString();
     }
    
-    public String printHand2()
+    public String hand2ToString()
     {
         return this.holeCards2.toString();
     }
@@ -227,7 +227,7 @@ public class Simulator
     {
         if (hand.length() != 4)
         {
-            throw new IllegalArgumentException(hand + " is not a valid hand - expected 2 cards but got " + hand.length()/2);
+            throw new IllegalArgumentException(hand + " is not a valid hand - expected 2 cards but got " + (int) Math.ceil(1.0*hand.length()/2));
         }
     }
 
@@ -235,8 +235,8 @@ public class Simulator
     public String toString()
     {
         String [] stringArray = {"Hand", "Equity", "Wins", "Ties",
-            this.printHand1(), decimalToPercentageString(this.equity1()), Integer.toString(wins) ,Integer.toString(ties), 
-            this.printHand2(), decimalToPercentageString(this.equity2()), Integer.toString(losses), Integer.toString(ties)
+            this.hand1ToString(), decimalToPercentageString(this.equity1()), Integer.toString(wins) ,Integer.toString(ties), 
+            this.hand2ToString(), decimalToPercentageString(this.equity2()), Integer.toString(losses), Integer.toString(ties)
         };
         String s = "";
         for (int i = 0; i < stringArray.length; i++)
