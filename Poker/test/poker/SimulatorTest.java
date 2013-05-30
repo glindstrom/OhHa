@@ -32,7 +32,7 @@ public class SimulatorTest
     {
         String hc1 = "AdAh";
         String hc2 = "KsKc";
-        sim.simulate("AdAh", "KsKc");
+        sim.calculateEquity("AdAh", "KsKc");
         assertEquals(hc1, sim.hand1ToString());
         assertEquals(hc2, sim.hand2ToString());
     }
@@ -40,44 +40,44 @@ public class SimulatorTest
     @Test
     public void lossesWinsAndTiesSumToTrialsAfterSimulation()
     {
-        sim.simulate("AdKc", "JhTs");
+        sim.calculateEquity("AdKc", "JhTs");
         assertEquals(sim.getTrials(), sim.getLosses() + sim.getWins() + sim.getTies());
     }
     
     @Test
     public void equityOfAAvsAAis50()
     {
-        sim.simulate("AdAc", "AhAs");
+        sim.calculateEquity("AdAc", "AhAs");
         assertEquals(0.5, sim.equity1(), 0.02);
     }
     
     @Test
     public void equityOfJTsVs22isCorrect()
     {
-        sim.simulate("5d5s", "2c2d");
+        sim.calculateEquity("5d5s", "2c2d");
         assertEquals(0.815, sim.equity1(), 0.02);
     }
     
     @Test
     public void twoSimulationsInRowWorks()
     {
-        sim.simulate("AdAc", "AhAs");
+        sim.calculateEquity("AdAc", "AhAs");
         assertEquals(0.5, sim.equity1(), 0.02);
-        sim.simulate("5d5s", "2c2d");
+        sim.calculateEquity("5d5s", "2c2d");
         assertEquals(0.815, sim.equity1(), 0.02);
     }
     
     @Test
     public void equitiesAddUpToOne()
     {
-        sim.simulate("5h4d", "Tc7c");
+        sim.calculateEquity("5h4d", "Tc7c");
         assertEquals(1.0, sim.equity1() + sim.equity2(), 0.000001);
     }
     
     @Test (expected = IllegalArgumentException.class)
     public void tooManyCardsLeadsToException()
     {
-        sim.simulate("AcKsQ", "AsKd");
+        sim.calculateEquity("AcKsQ", "AsKd");
     }
     
 }

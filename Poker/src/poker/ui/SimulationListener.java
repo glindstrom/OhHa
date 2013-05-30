@@ -6,22 +6,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import poker.PokerCalculator;
 import poker.Simulator;
 
 /**
- * ActionListener for the simulate button.
+ * ActionListener for the calculateEquity button.
  * 
  */
 public class SimulationListener implements ActionListener
-{
-    private Simulator sim;
+{    
+    private PokerCalculator calc;
     private JTextField hand1;
     private JTextField hand2;
     private JTextArea output;
     
-    public SimulationListener(Simulator sim, JTextField hand1, JTextField hand2, JTextArea output)
+    public SimulationListener(PokerCalculator calc, JTextField hand1, JTextField hand2, JTextArea output)
     {
-        this.sim = sim;
+        this.calc = calc;
         this.hand1 = hand1;
         this.hand2 = hand2;
         this.output = output;
@@ -32,8 +33,8 @@ public class SimulationListener implements ActionListener
     {
         try
         {
-            sim.simulate(hand1.getText().trim(), hand2.getText().trim());
-            output.setText(sim.toString());
+            calc.calculateEquity(hand1.getText().trim(), hand2.getText().trim());
+            output.setText(calc.toString());
         }
         catch (RuntimeException e)
         {

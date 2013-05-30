@@ -4,7 +4,7 @@ package poker.ui;
 
 import java.awt.*;
 import javax.swing.*;
-import poker.Simulator;
+import poker.PokerCalculator;
 
 /**
  * Provides a graphical user interface for a poker simulator.
@@ -13,10 +13,10 @@ import poker.Simulator;
 public class Gui implements Runnable
 {
     private JFrame frame;
-    private Simulator sim;
-    public Gui(Simulator sim)
+    private PokerCalculator calc;
+    public Gui(PokerCalculator calc)
     {
-        this.sim = sim;
+        this.calc = calc;
     }
     
     @Override
@@ -54,7 +54,7 @@ public class Gui implements Runnable
         panel.add(hand2);
         panel.add(new JLabel());
         JButton simulateButton = new JButton("Simulate");
-        SimulationListener listener = new SimulationListener(this.sim, hand1, hand2, output);
+        SimulationListener listener = new SimulationListener(this.calc, hand1, hand2, output);
         simulateButton.addActionListener(listener);
         panel.add(simulateButton);
         panel.add(new JLabel());

@@ -9,7 +9,7 @@ import poker.deck.Deck;
  * Calculates the pre-flop all-in equity for two Hold'em hands using a Monte Carlo simulation. 
  * 
  */
-public class Simulator 
+public class Simulator implements PokerCalculator
 {
     /**
      * The number of times hand1 won.
@@ -107,7 +107,7 @@ public class Simulator
      * @param hand1 string expression of the first hand
      * @param hand2 string expression of the second hand
      */
-    public void simulate(String hand1, String hand2)
+    public void calculateEquity(String hand1, String hand2)
     {
         checkHand(hand1);
         checkHand(hand2);
