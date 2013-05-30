@@ -14,6 +14,11 @@ public class Gui implements Runnable
 {
     private JFrame frame;
     private PokerCalculator calc;
+    
+    /**
+     * Class constructor.
+     * @param calc the pokerCalculator to be used
+     */
     public Gui(PokerCalculator calc)
     {
         this.calc = calc;
@@ -33,6 +38,10 @@ public class Gui implements Runnable
         
     }       
 
+    /**
+     * Adds components to the contentPane.
+     * @param container the container to which the components are added
+     */
     private void createComponents(Container container)
     {
         JTextArea output = new JTextArea(6,1);
@@ -43,6 +52,11 @@ public class Gui implements Runnable
         container.add(output, BorderLayout.SOUTH);
     }
     
+    /**
+     * Creates the input area.
+     * @param output the output area
+     * @return a JPanel
+     */
     private JPanel createInputArea(JTextArea output)
     {
         JPanel panel = new JPanel(new GridLayout(4,2));
