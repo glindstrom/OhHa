@@ -1,5 +1,6 @@
 package poker;
 
+import poker.deck.Card;
 import java.util.List;
 import poker.handCategories.*;
 /**

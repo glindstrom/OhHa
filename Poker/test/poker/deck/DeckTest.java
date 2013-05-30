@@ -1,6 +1,7 @@
 
-package poker;
+package poker.deck;
 
+import poker.deck.Deck;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;

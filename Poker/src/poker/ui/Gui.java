@@ -60,12 +60,6 @@ public class Gui implements Runnable
         panel.add(new JLabel());
         panel.add(new JLabel());
         return panel;
-    }
-    
-    public static void main(String[] args)
-    {
-        Gui gui = new Gui(new Simulator());
-        javax.swing.SwingUtilities.invokeLater(gui);
-    }
+    }    
 }
 

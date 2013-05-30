@@ -3,9 +3,9 @@
 package poker.handCategories;
 
 import java.util.TreeSet;
-import poker.Card;
+import poker.deck.Card;
 import poker.Hand;
-import poker.Rank;
+import poker.deck.Rank;
 
 /**
  * Represents a straight, the fifth strongest hand category.

@@ -8,7 +8,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import poker.Simulator;
 
-
+/**
+ * ActionListener for the simulate button.
+ * 
+ */
 public class SimulationListener implements ActionListener
 {
     private Simulator sim;

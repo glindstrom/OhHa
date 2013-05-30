@@ -1,7 +1,10 @@
 
-package poker;
+package poker.deck;
 
 
+import poker.deck.Suit;
+import poker.deck.Rank;
+import poker.deck.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 import static org.junit.Assert.*;

@@ -3,7 +3,7 @@
 package poker.handCategories;
 
 import java.util.TreeSet;
-import poker.Card;
+import poker.deck.Card;
 import poker.Hand;
 
 /**

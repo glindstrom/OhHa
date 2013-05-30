@@ -1,5 +1,5 @@
 
-package poker;
+package poker.deck;
 /**
  * This enum type represents the suit of a Card.
  * @see Card

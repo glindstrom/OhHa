@@ -1,5 +1,5 @@
 
-package poker;
+package poker.deck;
 
 /**
  * A Card object represents a playing card.

@@ -3,9 +3,9 @@ package poker.handCategories;
 
 import java.util.Collections;
 import java.util.List;
-import poker.Card;
+import poker.deck.Card;
 import poker.Hand;
-import poker.Rank;
+import poker.deck.Rank;
 
 /**
  *HandCategory is the abstract base class for the different hand types you can have

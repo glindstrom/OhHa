@@ -2,6 +2,9 @@
 
 package poker;
 
+import poker.deck.Card;
+import poker.deck.Deck;
+
 /**
  * Calculates the pre-flop all-in equity for two Hold'em hands using a Monte Carlo simulation. 
  * 

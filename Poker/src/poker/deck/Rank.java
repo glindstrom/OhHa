@@ -1,5 +1,5 @@
 
-package poker;
+package poker.deck;
 
 /**
  * This enum type represents the rank of a Card.

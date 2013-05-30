@@ -1,5 +1,6 @@
 package poker;
 
+import poker.deck.Card;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
