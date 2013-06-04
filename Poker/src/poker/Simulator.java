@@ -74,6 +74,11 @@ public class Simulator implements PokerCalculator
     {
         return trials;
     }
+
+    public void setTrials(int trials)
+    {
+        this.trials = trials;
+    }    
     
     /**
      * Calculates the winning percentage of the first hand.

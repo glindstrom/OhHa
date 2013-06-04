@@ -4,7 +4,7 @@ package poker.ui;
 
 import java.awt.*;
 import javax.swing.*;
-import poker.PokerCalculator;
+import poker.Simulator;
 
 /**
  * Provides a graphical user interface for a poker simulator.
@@ -13,15 +13,15 @@ import poker.PokerCalculator;
 public class Gui implements Runnable
 {
     private JFrame frame;
-    private PokerCalculator calc;
+    private Simulator sim;
     
     /**
      * Class constructor.
-     * @param calc the pokerCalculator to be used
+     * @param sim the simulator to be used
      */
-    public Gui(PokerCalculator calc)
+    public Gui(Simulator sim)
     {
-        this.calc = calc;
+        this.sim = sim;
     }
     
     @Override
@@ -31,6 +31,7 @@ public class Gui implements Runnable
         frame.setPreferredSize(new Dimension(400, 200));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
+        frame.setJMenuBar(createMenuBar());
         createComponents(frame.getContentPane());
         
         frame.pack();
@@ -60,20 +61,75 @@ public class Gui implements Runnable
     private JPanel createInputArea(JTextArea output)
     {
         JPanel panel = new JPanel(new GridLayout(4,2));
-        panel .add(new JLabel("Hand:"));
+        panel .add(new JLabel("Hand: "));
+        
         JTextField hand1 = new JTextField();
         panel.add(hand1);
-        panel.add(new JLabel("Hand:"));
+        panel.add(new JLabel("Hand: "));
         JTextField hand2 = new JTextField();
         panel.add(hand2);
+        
         panel.add(new JLabel());
-        JButton simulateButton = new JButton("Simulate");
-        SimulationListener listener = new SimulationListener(this.calc, hand1, hand2, output);
-        simulateButton.addActionListener(listener);
-        panel.add(simulateButton);
+        
+        addSimulateButton(panel, hand1, hand2, output);
+        
         panel.add(new JLabel());
         panel.add(new JLabel());
+        
         return panel;
     }    
+    
+    /**
+     * Creates a menu bar.
+     * @return a menu bar
+     */
+    private JMenuBar createMenuBar()
+    {
+        JMenuBar menuBar = new JMenuBar();        
+        menuBar.add(createFileMenu());
+        menuBar.add(createOptionsMenu());                                               
+        return menuBar;
+    }
+    
+    /**
+     * Creates a file menu.
+     * @return a menu
+     */
+    private JMenu createFileMenu()
+    {
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem exitItem = new JMenuItem("Exit");
+        fileMenu.add(exitItem);
+        exitItem.addActionListener(new ExitItemListener());
+        return fileMenu;
+    }
+    
+    /**
+     * Creates an options menu
+     * @return a menu
+     */
+    private JMenu createOptionsMenu()
+    {
+        JMenu optionsMenu = new JMenu("Options");
+        JMenuItem trialsItem = new JMenuItem("Trials");
+        trialsItem.addActionListener(new TrialsItemListener(frame, sim));
+        optionsMenu.add(trialsItem);        
+        return optionsMenu;
+    }             
+    
+    /**
+     * Adds a simulate button to the specified panel.
+     * @param panel the panel to which the button is added
+     * @param hand1 a text field for the first hand in the simulation
+     * @param hand2 a text field for the second hand in the simulation
+     * @param output the text area in which the result is displayed
+     */
+    private void addSimulateButton(JPanel panel, JTextField hand1, JTextField hand2, JTextArea output)
+    {
+        JButton simulateButton = new JButton("Simulate");
+        SimulationListener listener = new SimulationListener(this.sim, hand1, hand2, output);
+        simulateButton.addActionListener(listener);
+        panel.add(simulateButton);
+    }
 }
 
