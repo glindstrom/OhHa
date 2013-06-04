@@ -20,3 +20,4 @@
 29.5.2013 	5h	Ohjelmointi ja dokumenotinti
 30.5.2013	6h	Ohjelmointi ja dokumentointi
 3.6.2013	4h	Katselmointi 1
+4.6.2013	6h 	Ohjelmointi ja dokumentointi
