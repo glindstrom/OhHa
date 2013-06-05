@@ -36,15 +36,26 @@ public class TrialsItemListener implements ActionListener
     public void actionPerformed(ActionEvent ae)
     {
         int numberOfTrials = askInt();
-        if (numberOfTrials != 0)
+        if (numberOfTrials == 0)
         {
-            sim.setTrials(numberOfTrials);
+            return;
+        }
+        this.sim.setTrials(numberOfTrials);
+        try
+        {
+            Settings settings = new Settings();
+            settings.storeInt(numberOfTrials);
+            JOptionPane.showMessageDialog(frame, numberOfTrials + " is now stored as default.", "PEQ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(frame, "Error writing to file. Default value was not stored.", "PEQ", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
      * Returns an integer specified by the user.
-     * @return an integer in the interval [1000, 500000]
+     * @return an integer in the interval [1000, 500000], 0 if the user cancels
      */
     private int askInt()
     {
@@ -53,7 +64,7 @@ public class TrialsItemListener implements ActionListener
         int trials = 0;
         do
         {
-            s = JOptionPane.showInputDialog(frame, "Trials:", sim.getTrials());
+            s = JOptionPane.showInputDialog(frame, "Trials:", this.sim.getTrials());
             if (s == null)
             {
                 return trials;

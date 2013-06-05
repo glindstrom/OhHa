@@ -6,8 +6,8 @@ package poker.handCategories;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import poker.deck.Card;
 import poker.Hand;
+import poker.deck.Card;
 
 /**
  *

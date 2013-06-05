@@ -22,6 +22,7 @@ public class Gui implements Runnable
     public Gui(Simulator sim)
     {
         this.sim = sim;
+        initSimulator();
     }
     
     @Override
@@ -130,6 +131,19 @@ public class Gui implements Runnable
         SimulationListener listener = new SimulationListener(this.sim, hand1, hand2, output);
         simulateButton.addActionListener(listener);
         panel.add(simulateButton);
+    }
+
+    private void initSimulator()
+    {
+        try
+        {
+            Settings settings = new Settings();
+            this.sim.setTrials(settings.readInt());
+        }
+        catch (Exception e)
+        {
+            
+        }        
     }
 }
 

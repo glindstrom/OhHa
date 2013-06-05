@@ -107,11 +107,7 @@ public class Simulator implements PokerCalculator
         return 1.0*ties/trials;
     }
     
-    /**
-     * Calculates the equity of two hands.
-     * @param hand1 string expression of the first hand
-     * @param hand2 string expression of the second hand
-     */
+    @Override
     public void calculateEquity(String hand1, String hand2)
     {
         checkHand(hand1);

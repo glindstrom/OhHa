@@ -1,9 +1,9 @@
 package poker;
 
-import poker.deck.Card;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import poker.deck.Card;
 
 /**
  * A Hand object represents a poker hand containing at most seven cards.

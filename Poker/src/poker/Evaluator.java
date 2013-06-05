@@ -1,7 +1,7 @@
 package poker;
 
-import poker.deck.Card;
 import java.util.List;
+import poker.deck.Card;
 import poker.handCategories.*;
 /**
  * Determines the winner of two poker hands. 
