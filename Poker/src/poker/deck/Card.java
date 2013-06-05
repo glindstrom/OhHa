@@ -9,13 +9,19 @@ package poker.deck;
  */
 public class Card implements Comparable<Card>
 {
+    /**
+     * the rank of the card
+     */
     private Rank rank;
+    /**
+     * the suit of the card
+     */
     private Suit suit;
     
     /**
      * Constructs a card of the specified rank and suit.
-     * @param rank The rank of the card.
-     * @param suit The suit of the card.
+     * @param rank the rank of the card
+     * @param suit the suit of the card
      */
     public Card(Rank rank, Suit suit)
     {

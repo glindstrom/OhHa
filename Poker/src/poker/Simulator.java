@@ -111,11 +111,11 @@ public class Simulator implements PokerCalculator
     public void calculateEquity(String hand1, String hand2)
     {
         checkHand(hand1);
-        checkHand(hand2);
-        resetStats();
+        checkHand(hand2);                
         this.holeCards1 = new Hand(hand1);
         this.holeCards2 = new Hand(hand2);
-        
+        checkMutualExclusivity();
+        resetStats();
         for (int i = 0; i < this.trials; i++)
         {
             this.deck.reset();
@@ -224,15 +224,26 @@ public class Simulator implements PokerCalculator
     }
     
     /**
-     * Checks that the hand has correct length.
+     * Checks that the hand is valid.
      * @param hand a string representation of a hand.
+     * @throws IllegalArgumentException if the hand length differs from 4
      */
     private void checkHand(String hand)
     {
+        if (hand.isEmpty())
+        {
+            throw new IllegalArgumentException("Invalid hand - hand is empty.");
+        }
+        
         if (hand.length() != 4)
         {
-            throw new IllegalArgumentException(hand + " is not a valid hand - expected 2 cards but got " + (int) Math.ceil(1.0*hand.length()/2));
+            throw new IllegalArgumentException(hand + " is not a valid hand - a hand must contain 2 cards.");
         }
+        
+        if (!handSyntaxValid(hand))
+        {
+            throw new IllegalArgumentException("Invalid syntax. " + hand + " is not a valid hand.");
+        }                        
     }
 
     @Override
@@ -257,10 +268,47 @@ public class Simulator implements PokerCalculator
         return s;
     }
     
+    /**
+     * Converts a double to percentage.
+     * @param d the double to be converted
+     * @return a string expressing the double as percentage
+     */
     private String decimalToPercentageString(double d)
     {
         return String.format("%.2f", 100*d) + "%";
     }
     
+    /**
+     * Checks that the string represents a valid hand.
+     * @param hand the hand to be checked.
+     * @return true if the hand is valid
+     */
+    private boolean handSyntaxValid(String hand)
+    {
+        String ranks = "AKQJT98765432";
+        String suits = "CDHS";
+        hand = hand.toUpperCase();
+                
+        if (!ranks.contains(Character.toString(hand.charAt(0))) || !ranks.contains(Character.toString(hand.charAt(2)))
+                || !suits.contains(Character.toString(hand.charAt(1))) || !suits.contains(Character.toString(hand.charAt(3))))
+        {
+            return false;
+        }
+        return true;
+    }
     
+    /**
+     * Checks that a card is not in both hands at the same time.
+     * @throws IllegalArgumentException if both hands contain the same card.
+     */
+    private void checkMutualExclusivity()
+    {
+        for (Card c : this.holeCards1.getCards())
+        {
+            if (this.holeCards2.getCards().contains(c))
+            {
+                throw new IllegalArgumentException(c + " cannot be in both hands at the same time.");
+            }
+        }
+    }
 }

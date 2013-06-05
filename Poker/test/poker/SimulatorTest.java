@@ -80,4 +80,15 @@ public class SimulatorTest
         sim.calculateEquity("AcKsQ", "AsKd");
     }
     
+    @Test (expected = IllegalArgumentException.class)
+    public void faultyCardLeadsToException()
+    {
+        sim.calculateEquity("Ac5b", "Kc7s");
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void sameCardInBothHandsLeadsToException()
+    {
+        sim.calculateEquity("Jc9s", "Jc8h");
+    }
 }

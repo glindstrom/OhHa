@@ -133,6 +133,9 @@ public class Gui implements Runnable
         panel.add(simulateButton);
     }
 
+    /**
+     * Sets the default number of trials from file, if such a number exists.
+     */
     private void initSimulator()
     {
         try
@@ -141,8 +144,7 @@ public class Gui implements Runnable
             this.sim.setTrials(settings.readInt());
         }
         catch (Exception e)
-        {
-            
+        {            
         }        
     }
 }

@@ -1,7 +1,6 @@
 package poker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import poker.deck.Card;
 
@@ -29,6 +28,8 @@ public class Hand
      * Class constructor specifying the cards in the hand.
      * @param cards Specifies up to seven card objects to be included in the
      * hand.
+     * @throws IllegalArgumentException if hand contains more than seven cards.
+     * @throws NullPointerException if cards == null.
      */
     public Hand(Card... cards)
     {
@@ -39,9 +40,12 @@ public class Hand
         }
         if (cards == null)
         {
-            throw new NullPointerException("Card must not be null");
+            throw new NullPointerException("Card must not be null.");
         }
-        this.cards.addAll(Arrays.asList(cards));
+        for (Card c : cards)
+        {
+            this.addCard(c);
+        }
     }
     
     /**
@@ -53,7 +57,11 @@ public class Hand
         this();
         if (hand == null)
         {
-            throw new NullPointerException("String must not be null");
+            throw new NullPointerException("String must not be null.");
+        }
+        if (hand.length() > 14)
+        {
+            throw new IllegalArgumentException("A hand can contain at most seven cards.");
         }
         for (int i = 0; i < hand.length(); i += 2)
         {
@@ -61,7 +69,7 @@ public class Hand
             Card c = new Card(card);
             if (!this.addCard(c))
             {
-                throw new IllegalArgumentException("A hand can contain at most seven cards.");
+                throw new IllegalArgumentException("Every card in the hand must be unique.");
             }            
         }
     }
@@ -70,7 +78,7 @@ public class Hand
      * Adds a card to the Hand. At most seven cards can be added to the hand.
      *
      * @param c the card to be added
-     * @return true if the card was successfully added, false otherwise
+     * @return true if the card was successfully added, false if the hand already contains the card
      * @throws NullPointerException if c == null
      */
     public final boolean addCard(Card c)
@@ -80,6 +88,10 @@ public class Hand
             throw new NullPointerException("Card must not be null.");
         }
         if (this.cards.size() == 7)
+        {
+            return false;
+        }
+        if (this.cards.contains(c))
         {
             return false;
         }

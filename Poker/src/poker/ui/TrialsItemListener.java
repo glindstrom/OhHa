@@ -45,11 +45,11 @@ public class TrialsItemListener implements ActionListener
         {
             Settings settings = new Settings();
             settings.storeInt(numberOfTrials);
-            JOptionPane.showMessageDialog(frame, numberOfTrials + " is now stored as default.", "PEQ", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frame, numberOfTrials + " is now stored as default.", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(frame, "Error writing to file. Default value was not stored.", "PEQ", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Error writing to file. Default value was not stored.", "Fail", JOptionPane.ERROR_MESSAGE);
         }
     }
 

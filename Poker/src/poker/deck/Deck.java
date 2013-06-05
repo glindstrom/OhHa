@@ -12,6 +12,9 @@ import java.util.List;
  */
 public class Deck 
 {
+    /**
+     * a list containing the cards in the deck
+     */
     private List<Card> cards;
     
     /*

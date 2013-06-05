@@ -3,8 +3,8 @@ package poker.handCategories;
 
 import java.util.Collections;
 import java.util.List;
-import poker.deck.Card;
 import poker.Hand;
+import poker.deck.Card;
 import poker.deck.Rank;
 
 /**
@@ -14,7 +14,13 @@ import poker.deck.Rank;
  */
 public abstract class HandCategory implements Comparable<HandCategory>
 {
+    /**
+     * the order number of the hand category
+     */
     private int ordinal;
+    /**
+     * the hand associated with the hand category
+     */
     private Hand hand;
     
     /**

@@ -1,12 +1,11 @@
 package poker;
 
-import poker.deck.Card;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import poker.deck.Card;
 
 public class HandTest
 {
-
     @Test
     public void addingCardSuccessfullyReturnsTrue()
     {
@@ -57,5 +56,11 @@ public class HandTest
     public void moreThanSevenCardsInStringConstructorCausesException()
     {
         Hand h = new Hand("7sAc6h3dKc9d8sJh");
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void addingSameCardTwiceCausesException()
+    {
+        Hand h = new Hand("6sKc4dKc5s");
     }
 }

@@ -6,21 +6,9 @@ package poker.deck;
  */
 public enum Suit
 {
-    /**
-     * Ordinal value 0.
-     */
     SPADES('s'), 
-    /**
-     * Ordinal value 1.
-     */
     HEARTS('h'), 
-    /**
-     * Ordinal value 2.
-     */
     DIAMONDS('d'), 
-    /**
-     * Ordinal value 3.
-     */
     CLUBS('c');
     
     private char abbreviation;
