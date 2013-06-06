@@ -29,7 +29,7 @@ public class Gui implements Runnable
     public void run()
     {
         frame = new JFrame("Texas Hold'em Equity Calculator");
-        frame.setPreferredSize(new Dimension(400, 200));
+        frame.setPreferredSize(new Dimension(405, 210));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         frame.setJMenuBar(createMenuBar());
