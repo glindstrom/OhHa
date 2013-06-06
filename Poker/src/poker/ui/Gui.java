@@ -141,7 +141,7 @@ public class Gui implements Runnable
         try
         {
             Settings settings = new Settings();
-            this.sim.setTrials(settings.readInt());
+            this.sim.setTrials(settings.readTrials());
         }
         catch (Exception e)
         {            

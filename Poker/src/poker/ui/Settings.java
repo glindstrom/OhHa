@@ -1,26 +1,28 @@
-
-
 package poker.ui;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
- * Reads/writes an integer from/to a file.
- * 
+ * Stores/retrieves the number of trials to/from file.
+ *
  */
-public class Settings 
+public class Settings
 {
+
     /**
      * The file where the settings are stored.
      */
-    File file;
+    private File file;
+    /**
+     * The file handler which performs I/O operations.
+     */
+    private FileHandler fileHandler;
 
     /**
      * Class constructor.
+     *
      * @throws IOException if an I/O error occurs.
      */
     public Settings() throws Exception
@@ -29,36 +31,31 @@ public class Settings
         if (!this.file.exists())
         {
             this.file.createNewFile();
-        }        
-    }    
-    
-    /**
-     * Writes an int to file.
-     * @param i the int to be written
-     * @throws IOException if an I/O error occurs. 
-     */
-    public void storeInt(int i) throws Exception
-    {
-        try (DataOutputStream out = new DataOutputStream(new FileOutputStream(file)))
-        {
-            out.writeInt(i);
         }
-    }
-    
-    /**
-     * Reads an int from file.
-     * @return the stored int
-     * @throws EOFException if the file is empty.
-     * @throws IOException if the stream has been closed or another I/O error occurs.
-     */
-    public int readInt() throws Exception
-    {
-        int i;
-        try (DataInputStream in = new DataInputStream(new FileInputStream(file)))
-        {
-            i = in.readInt();
-        }
-        return i;
+        this.fileHandler = new FileHandler();
     }
 
+    /**
+     * Writes an int to file.
+     *
+     * @param i the int to be written
+     * @throws IOException if an I/O error occurs.
+     */
+    public void storeTrials(int i) throws Exception
+    {
+        fileHandler.storeInt(file, i);
+    }
+
+    /**
+     * Reads an int from file.
+     *
+     * @return the stored int
+     * @throws EOFException if the file is empty.
+     * @throws IOException if the stream has been closed or another I/O error
+     * occurs.
+     */
+    public int readTrials() throws Exception
+    {
+        return fileHandler.readInt(file);
+    }
 }

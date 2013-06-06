@@ -22,16 +22,16 @@ public class SettingsTest
     @Test 
     public void fileContentCorrectAfterWritingToIt() throws Exception
     {
-        settings.storeInt(4000);
-        assertEquals(4000, settings.readInt());
+        settings.storeTrials(4000);
+        assertEquals(4000, settings.readTrials());
     }
     
     @Test
     public void fileContentCorrectAfterWritingToItTwice() throws Exception
     {
-        settings.storeInt(4000);
-        settings.storeInt(10000);
-        assertEquals(10000, settings.readInt());
+        settings.storeTrials(4000);
+        settings.storeTrials(10000);
+        assertEquals(10000, settings.readTrials());
     }    
     
     @After

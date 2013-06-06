@@ -44,7 +44,7 @@ public class TrialsItemListener implements ActionListener
         try
         {
             Settings settings = new Settings();
-            settings.storeInt(numberOfTrials);
+            settings.storeTrials(numberOfTrials);
             JOptionPane.showMessageDialog(frame, numberOfTrials + " is now stored as default.", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (Exception e)
