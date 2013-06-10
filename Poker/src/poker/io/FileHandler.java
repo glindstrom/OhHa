@@ -1,4 +1,4 @@
-package poker.ui;
+package poker.io;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

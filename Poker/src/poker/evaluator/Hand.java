@@ -1,4 +1,4 @@
-package poker;
+package poker.evaluator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class Hand
      * Class constructor specifying the cards in the hand as a String.
      * @param hand a string representation of the cards in the hand
      */
-    Hand(String hand)
+    public Hand(String hand)
     {
         this();
         if (hand == null)

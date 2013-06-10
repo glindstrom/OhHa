@@ -1,5 +1,5 @@
 
-package poker;
+package poker.calculator;
 
 /**
  * The user of this interface can calculate the equity of two poker hands.

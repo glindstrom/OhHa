@@ -1,10 +1,11 @@
 package poker.ui;
 
+import poker.io.Settings;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import poker.Simulator;
+import poker.calculator.Simulator;
 
 /**
  * ActionListener for the trials option.

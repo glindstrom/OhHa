@@ -2,9 +2,10 @@
 
 package poker.ui;
 
+import poker.io.Settings;
 import java.awt.*;
 import javax.swing.*;
-import poker.Simulator;
+import poker.calculator.Simulator;
 
 /**
  * Provides a graphical user interface for a poker simulator.

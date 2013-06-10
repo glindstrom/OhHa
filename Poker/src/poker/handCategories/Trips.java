@@ -2,7 +2,7 @@
 
 package poker.handCategories;
 
-import poker.Hand;
+import poker.evaluator.Hand;
 
 /**
  * Represents three of a kind, the sixth strongest hand category.

@@ -1,5 +1,7 @@
-package poker;
+package poker.evaluator;
 
+import poker.evaluator.Hand;
+import poker.evaluator.Evaluator;
 import poker.deck.Card;
 import static org.junit.Assert.*;
 import org.junit.Before;

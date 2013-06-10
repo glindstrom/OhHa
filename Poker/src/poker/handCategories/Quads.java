@@ -1,7 +1,7 @@
 
 
 package poker.handCategories;
-import poker.Hand;
+import poker.evaluator.Hand;
 
 /**
  * Represents four of a kind, the second strongest hand category.

@@ -1,4 +1,4 @@
-package poker;
+package poker.evaluator;
 
 import java.util.List;
 import poker.deck.Card;

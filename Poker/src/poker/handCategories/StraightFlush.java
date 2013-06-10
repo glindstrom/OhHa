@@ -4,7 +4,7 @@ package poker.handCategories;
 
 import java.util.TreeSet;
 import poker.deck.Card;
-import poker.Hand;
+import poker.evaluator.Hand;
 
 /**
  * Represents a straight flush, the strongest hand category.

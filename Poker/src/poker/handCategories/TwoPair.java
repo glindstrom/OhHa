@@ -2,7 +2,7 @@
 
 package poker.handCategories;
 
-import poker.Hand;
+import poker.evaluator.Hand;
 
 /**
  * Represents two pair, the seventh strongest hand category.

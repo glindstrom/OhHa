@@ -2,7 +2,7 @@
 
 package poker.handCategories;
 
-import poker.Hand;
+import poker.evaluator.Hand;
 
 /**
  * Represents high card, the weakest hand category.

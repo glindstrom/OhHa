@@ -1,7 +1,9 @@
 
 
-package poker;
+package poker.calculator;
 
+import poker.evaluator.Evaluator;
+import poker.evaluator.Hand;
 import poker.deck.Card;
 import poker.deck.Deck;
 

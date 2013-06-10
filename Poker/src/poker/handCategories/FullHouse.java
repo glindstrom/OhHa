@@ -2,7 +2,7 @@
 
 package poker.handCategories;
 
-import poker.Hand;
+import poker.evaluator.Hand;
 
 /**
  * Represents a full house, the third strongest hand category.

@@ -3,7 +3,7 @@ package poker.handCategories;
 
 import java.util.Collections;
 import java.util.List;
-import poker.Hand;
+import poker.evaluator.Hand;
 import poker.deck.Card;
 import poker.deck.Rank;
 

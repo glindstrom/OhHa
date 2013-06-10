@@ -2,6 +2,7 @@
 
 package poker;
 
+import poker.calculator.Simulator;
 import poker.ui.Gui;
 
 /**

@@ -1,4 +1,4 @@
-package poker.ui;
+package poker.io;
 
 import java.io.EOFException;
 import java.io.File;
