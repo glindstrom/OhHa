@@ -25,3 +25,4 @@
 6.6.2013	2h	Luokka- ja sekvenssikaaviot
 6.6.2013	3h	Ohjelmointi ja dokumentointi
 7.6.2013	3h	Katselmointi 2
+10.6.2013	2h	Ohjelmointi ja dokumentointi
