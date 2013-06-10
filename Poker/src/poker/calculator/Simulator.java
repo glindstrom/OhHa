@@ -2,10 +2,10 @@
 
 package poker.calculator;
 
-import poker.evaluator.Evaluator;
-import poker.evaluator.Hand;
 import poker.deck.Card;
 import poker.deck.Deck;
+import poker.evaluator.Evaluator;
+import poker.evaluator.Hand;
 
 /**
  * Calculates the pre-flop all-in equity for two Hold'em hands using a Monte Carlo simulation. 
@@ -166,11 +166,11 @@ public class Simulator implements PokerCalculator
      */
     private void removeHoleCardsFromDeck()
     {
-        for (Card c : this.holeCards1.getCards())
+        for (Card c : this.holeCards1)
         {
             this.deck.remove(c);
         }
-        for (Card c : this.holeCards2.getCards())
+        for (Card c : this.holeCards2)
         {
             this.deck.remove(c);
         }
@@ -305,7 +305,7 @@ public class Simulator implements PokerCalculator
      */
     private void checkMutualExclusivity()
     {
-        for (Card c : this.holeCards1.getCards())
+        for (Card c : this.holeCards1)
         {
             if (this.holeCards2.getCards().contains(c))
             {

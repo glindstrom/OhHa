@@ -22,9 +22,14 @@ public class Evaluator
      * @param h1 the first hand to be compared
      * @param h2 the second hand to be compared
      * @return Returns 1 if h1 wins, 2 if h2 wins and 0 if the hands tie.
+     * @throws NullPointerException if either hand is null
      */
     public int compareHands(Hand h1, Hand h2)
     {
+        if (h1 == null || h2 == null)
+        {
+            throw new NullPointerException();
+        }
         if (h1.size() != 5 && h2.size() != 5)
         {
             return 0;
@@ -53,9 +58,14 @@ public class Evaluator
      * Returns the best 5-card poker hand you can make from a 7-card hand.
      * @param h the 7-card hand to be evaluated
      * @return the best 5-card hand you can make from a 7-card hand
+     * @throws NullPointerException if the hand is null
      */
     public Hand best5CardHand(Hand h)
     {        
+        if (h == null)
+        {
+            throw new NullPointerException("Hand must not be null.");
+        }
         return best5CardHandOutOfNcards(h, 7);
     }
 

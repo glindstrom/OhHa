@@ -3,6 +3,7 @@ package poker.evaluator;
 import poker.evaluator.Hand;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.internal.builders.NullBuilder;
 import poker.deck.Card;
 
 public class HandTest
@@ -63,5 +64,34 @@ public class HandTest
     public void addingSameCardTwiceCausesException()
     {
         Hand h = new Hand("6sKc4dKc5s");
+    }
+    
+    @Test (expected = NullPointerException.class)
+    public void constructorThrowsNullPointerException()
+    {
+        Card c = null;
+        Hand h = new Hand(c);
+    }
+    
+    @Test
+    public void handContainsAllCardsFromBothHandAfterMerging()
+    {
+        Hand h1 = new Hand("Ac5d3sKdJh");
+        Hand h2 = new Hand("KcTh");
+        Hand h3 = Hand.mergeHands(h1, h2);
+        for (Card c : h1)
+        {
+            assertTrue(h3.getCards().contains(c));
+        }
+        for (Card c : h2)
+        {
+            assertTrue(h3.getCards().contains(c));
+        }
+    }
+    
+    @Test (expected = NullPointerException.class)
+    public void mergeHandsThrowsNullPointerException()
+    {
+        Hand.mergeHands(null, null);
     }
 }

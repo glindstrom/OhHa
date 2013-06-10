@@ -1,6 +1,7 @@
 package poker.evaluator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import poker.deck.Card;
 
@@ -9,7 +10,7 @@ import poker.deck.Card;
  *
  * @see Card
  */
-public class Hand
+public class Hand implements Iterable<Card>
 {
     /**
      * the cards in the hand
@@ -34,14 +35,14 @@ public class Hand
     public Hand(Card... cards)
     {
         this();
-        if (cards.length > 7)
-        {
-            throw new IllegalArgumentException("A hand can contain at most seven cards.");
-        }
         if (cards == null)
         {
             throw new NullPointerException("Card must not be null.");
         }
+        if (cards.length > 7)
+        {
+            throw new IllegalArgumentException("A hand can contain at most seven cards.");
+        }        
         for (Card c : cards)
         {
             this.addCard(c);
@@ -51,6 +52,7 @@ public class Hand
     /**
      * Class constructor specifying the cards in the hand as a String.
      * @param hand a string representation of the cards in the hand
+     * @throws NullPointerException if hand == null
      */
     public Hand(String hand)
     {
@@ -126,6 +128,10 @@ public class Hand
      */
     public static Hand mergeHands(Hand h1, Hand h2)
     {
+        if (h1 == null || h2 == null)
+        {
+            throw new NullPointerException();
+        }
         Hand h = new Hand();
         for (Card c : h1.cards)
         {
@@ -148,6 +154,12 @@ public class Hand
         }
         
         return hand;
+    }
+
+    @Override
+    public Iterator<Card> iterator()
+    {
+        return this.cards.iterator();
     }
     
     
