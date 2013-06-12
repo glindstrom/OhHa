@@ -91,4 +91,10 @@ public class SimulatorTest
     {
         sim.calculateEquity("Jc9s", "Jc8h");
     }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void fewerThanOneTrialsLeadsToException()
+    {
+        sim.setTrials(0);
+    }
 }

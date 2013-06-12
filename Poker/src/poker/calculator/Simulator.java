@@ -79,6 +79,10 @@ public class Simulator implements PokerCalculator
 
     public void setTrials(int trials)
     {
+        if (trials < 1)
+        {
+            throw new IllegalArgumentException("The number of trials has to be positive.");
+        }
         this.trials = trials;
     }    
     
