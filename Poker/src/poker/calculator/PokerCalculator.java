@@ -13,4 +13,19 @@ public interface PokerCalculator
      * @param hand2 string expression of the second hand
      */
     void calculateEquity(String hand1, String hand2);
+    
+     /**
+     * Calculates the equity of the first hand.
+     * Equity is defined as winning percentage + tie percentage / 2. For example,
+     * if the pot size is 100 and the equity is 60 %, it means that the expected
+     * stack size is 0.6*100=60.
+     * @return the equity expressed as a decimal number
+     */
+    double equity1();
+    
+    /**
+     * Calculates the equity of the second hand.
+     * @return the equity expressed as a decimal number
+     */
+     double equity2();
 }

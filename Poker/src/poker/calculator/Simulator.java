@@ -144,22 +144,13 @@ public class Simulator implements PokerCalculator
         return this.holeCards2.toString();
     }
     
-    /**
-     * Calculates the equity of the first hand.
-     * Equity is defined as winning percentage + tie percentage / 2. For example,
-     * if the pot size is 100 and the equity is 60 %, it means that the expected
-     * stack size is 0.6*100=60.
-     * @return the equity expressed as a decimal number
-     */
+    @Override
     public double equity1()
     {
         return winPercentage() + 0.5*tiePercentage();
     }
     
-    /**
-     * Calculates the equity of the second hand.
-     * @return the equity expressed as a decimal number
-     */
+    @Override
     public double equity2()
     {
         return lossPercentage() + 0.5*tiePercentage();
