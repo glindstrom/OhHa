@@ -27,3 +27,4 @@
 7.6.2013	3h	Katselmointi 2
 10.6.2013	2h	Ohjelmointi ja dokumentointi
 12.6.2013	0,5h	Ohjelmointi
+14.6.2013	2h	Dokumentointi
