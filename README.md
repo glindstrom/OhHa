@@ -1,3 +1,3 @@
 OhHa
 ====
-Test
+Texas Hold'em Equity Calculator
