@@ -1,5 +1,3 @@
-
-
 package poker.calculator;
 
 import poker.deck.Card;
@@ -8,11 +6,13 @@ import poker.evaluator.Evaluator;
 import poker.evaluator.Hand;
 
 /**
- * Calculates the pre-flop all-in equity for two Hold'em hands using a Monte Carlo simulation. 
- * 
+ * Calculates the pre-flop all-in equity for two Hold'em hands using a Monte
+ * Carlo simulation.
+ *
  */
 public class Simulator implements PokerCalculator
 {
+
     /**
      * The number of times hand1 won.
      */
@@ -45,7 +45,7 @@ public class Simulator implements PokerCalculator
      * A hand evaluator.
      */
     private Evaluator evaluator;
-    
+
     /**
      * Class constructor.
      */
@@ -56,12 +56,12 @@ public class Simulator implements PokerCalculator
         this.trials = 50000;
         this.evaluator = new Evaluator();
     }
-    
+
     public int getWins()
     {
         return this.wins;
     }
-    
+
     public int getLosses()
     {
         return this.losses;
@@ -70,7 +70,7 @@ public class Simulator implements PokerCalculator
     public int getTies()
     {
         return ties;
-    }        
+    }
 
     public int getTrials()
     {
@@ -79,6 +79,7 @@ public class Simulator implements PokerCalculator
 
     /**
      * Sets the number of trials to be used.
+     *
      * @param trials the number of trials to be used
      * @throws IllegalArgumentException if the number of trials is less than one
      */
@@ -89,40 +90,13 @@ public class Simulator implements PokerCalculator
             throw new IllegalArgumentException("The number of trials has to be positive.");
         }
         this.trials = trials;
-    }    
-    
-    /**
-     * Calculates the winning percentage of the first hand.
-     * @return the winning percentage expressed in decimal format
-     */
-    public double winPercentage()
-    {
-        return 1.0*this.wins/trials;
     }
-    
-    /**
-     * Calculates the loss percentage of the first hand.
-     * @return the loss percentage expressed in decimal format
-     */
-     public double lossPercentage()
-    {
-        return 1.0*losses/trials;
-    }
-     
-    /**
-     * Calculates the tie percentage.
-     * @return the tie percentage expressed in decimal format
-     */ 
-    public double tiePercentage()
-    {
-        return 1.0*ties/trials;
-    }
-    
+
     @Override
     public void calculateEquity(String hand1, String hand2)
     {
         checkHand(hand1);
-        checkHand(hand2);                
+        checkHand(hand2);
         this.holeCards1 = new Hand(hand1);
         this.holeCards2 = new Hand(hand2);
         checkMutualExclusivity();
@@ -138,29 +112,59 @@ public class Simulator implements PokerCalculator
             updateResults(h1, h2);
         }
     }
-    
+
     public String hand1ToString()
     {
         return this.holeCards1.toString();
     }
-   
+
     public String hand2ToString()
     {
         return this.holeCards2.toString();
     }
-    
+
     @Override
     public double equity1()
     {
-        return winPercentage() + 0.5*tiePercentage();
+        return winPercentage1() + 0.5 * tiePercentage();
     }
-    
+
     @Override
     public double equity2()
     {
-        return lossPercentage() + 0.5*tiePercentage();
+        return winPercentage2() + 0.5 * tiePercentage();
     }
-    
+
+    /**
+     * Calculates the winning percentage of the first hand.
+     *
+     * @return the winning percentage expressed in decimal format
+     */
+    private double winPercentage1()
+    {
+        return 1.0 * this.wins / trials;
+    }
+
+    /**
+     * Calculates the winning percentage of the second hand.
+     *
+     * @return the loss percentage expressed in decimal format
+     */
+    private double winPercentage2()
+    {
+        return 1.0 * losses / trials;
+    }
+
+    /**
+     * Calculates the tie percentage.
+     *
+     * @return the tie percentage expressed in decimal format
+     */
+    public double tiePercentage()
+    {
+        return 1.0 * ties / trials;
+    }
+
     /**
      * Removes the hole cards from the deck.
      */
@@ -175,9 +179,10 @@ public class Simulator implements PokerCalculator
             this.deck.remove(c);
         }
     }
-    
+
     /**
      * Deals the board.
+     *
      * @return a 5-card hand
      */
     private Hand deal5cards()
@@ -193,6 +198,7 @@ public class Simulator implements PokerCalculator
 
     /**
      * Updates the counters after performed simulation.
+     *
      * @param h1 The board + hole cards of the first hand.
      * @param h2 The board + hole cards of the second hand.
      */
@@ -204,17 +210,15 @@ public class Simulator implements PokerCalculator
         if (comparison == 1)
         {
             this.wins++;
-        }
-        else if (comparison == 2)
+        } else if (comparison == 2)
         {
             this.losses++;
-        }
-        else 
+        } else
         {
             ties++;
         }
     }
-    
+
     /**
      * Sets all counters to zero.
      */
@@ -224,9 +228,10 @@ public class Simulator implements PokerCalculator
         this.losses = 0;
         this.ties = 0;
     }
-    
+
     /**
      * Checks that the hand is valid.
+     *
      * @param hand a string representation of a hand.
      * @throws IllegalArgumentException if the hand length differs from 4
      */
@@ -236,52 +241,55 @@ public class Simulator implements PokerCalculator
         {
             throw new IllegalArgumentException("Invalid hand - hand is empty.");
         }
-        
+
         if (hand.length() != 4)
         {
             throw new IllegalArgumentException(hand + " is not a valid hand - a hand must contain 2 cards.");
         }
-        
+
         if (!handSyntaxValid(hand))
         {
             throw new IllegalArgumentException("Invalid syntax. " + hand + " is not a valid hand.");
-        }                        
+        }
     }
 
     @Override
     public String toString()
     {
-        String [] stringArray = {"Hand", "Equity", "Wins", "Ties",
-            this.hand1ToString(), decimalToPercentageString(this.equity1()), Integer.toString(wins) ,Integer.toString(ties), 
+        String[] stringArray =
+        {
+            "Hand", "Equity", "Wins", "Ties",
+            this.hand1ToString(), decimalToPercentageString(this.equity1()), Integer.toString(wins), Integer.toString(ties),
             this.hand2ToString(), decimalToPercentageString(this.equity2()), Integer.toString(losses), Integer.toString(ties)
         };
         String s = "";
         for (int i = 0; i < stringArray.length; i++)
         {
-            if ((i+1) % 4 != 0)
+            if ((i + 1) % 4 != 0)
             {
-                s +=  String.format("%-15s", stringArray[i]);
-            }
-            else
+                s += String.format("%-15s", stringArray[i]);
+            } else
             {
                 s += stringArray[i] + "\n";
             }
         }
         return s;
     }
-    
+
     /**
      * Converts a double to percentage.
+     *
      * @param d the double to be converted
      * @return a string expressing the double as percentage
      */
     private String decimalToPercentageString(double d)
     {
-        return String.format("%.2f", 100*d) + "%";
+        return String.format("%.2f", 100 * d) + "%";
     }
-    
+
     /**
      * Checks that the string represents a valid hand.
+     *
      * @param hand the hand to be checked.
      * @return true if the hand is valid
      */
@@ -290,7 +298,7 @@ public class Simulator implements PokerCalculator
         String ranks = "AKQJT98765432";
         String suits = "CDHS";
         hand = hand.toUpperCase();
-                
+
         if (!ranks.contains(Character.toString(hand.charAt(0))) || !ranks.contains(Character.toString(hand.charAt(2)))
                 || !suits.contains(Character.toString(hand.charAt(1))) || !suits.contains(Character.toString(hand.charAt(3))))
         {
@@ -298,9 +306,10 @@ public class Simulator implements PokerCalculator
         }
         return true;
     }
-    
+
     /**
      * Checks that a card is not in both hands at the same time.
+     *
      * @throws IllegalArgumentException if both hands contain the same card.
      */
     private void checkMutualExclusivity()
