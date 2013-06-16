@@ -77,6 +77,11 @@ public class Simulator implements PokerCalculator
         return trials;
     }
 
+    /**
+     * Sets the number of trials to be used.
+     * @param trials the number of trials to be used
+     * @throws IllegalArgumentException if the number of trials is less than one
+     */
     public void setTrials(int trials)
     {
         if (trials < 1)

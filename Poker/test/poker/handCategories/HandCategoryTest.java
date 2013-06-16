@@ -6,13 +6,10 @@ package poker.handCategories;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import poker.evaluator.Hand;
 import poker.deck.Card;
+import poker.evaluator.Hand;
 
-/**
- *
- * @author Gabriel
- */
+
 public class HandCategoryTest
 {
     

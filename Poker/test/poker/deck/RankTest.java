@@ -4,7 +4,6 @@
  */
 package poker.deck;
 
-import poker.deck.Rank;
 import static org.junit.Assert.*;
 import org.junit.Test;
 

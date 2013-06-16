@@ -1,7 +1,6 @@
 
 package poker.io;
 
-import poker.io.Settings;
 import java.io.File;
 import org.junit.After;
 import static org.junit.Assert.*;

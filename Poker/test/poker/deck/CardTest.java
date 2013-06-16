@@ -2,9 +2,6 @@
 package poker.deck;
 
 
-import poker.deck.Suit;
-import poker.deck.Rank;
-import poker.deck.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 import static org.junit.Assert.*;
@@ -99,5 +96,21 @@ public class CardTest
         Card c1 = new Card("Kd");
         Card c2 = new Card("Kd");
         assertEquals(c1, c2);
+    }
+    
+    @Test
+    public void cardsWithDifferentRanksAreNotEqual()
+    {
+        Card c1 = new Card("Ad");
+        Card c2 = new Card("Kd");
+        assertFalse(c1.equals(c2));
+    }
+    
+    @Test
+    public void cardsWithDifferentSuitsAreNotEquals()
+    {
+        Card c1 = new Card("Jd");
+        Card c2 = new Card("Jh");
+        assertFalse(c1.equals(c2));
     }
 }
